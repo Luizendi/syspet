@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'home', 'title' => __('Material Dashboard')])
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ __('SysPet') }}</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
+@section('content')
+<div class="container" style="height: auto;">
+  <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-8">
+          <h1 class="text-white text-center">{{ __('Welcome to Material Dashboard FREE Laravel Live Preview.') }}</h1>
+      </div>
+  </div>
+</div>
+@endsection
