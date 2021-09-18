@@ -1,0 +1,13 @@
+{
+    "name": "Atendimento",
+    "alias": "atendimento",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Atendimento\\Providers\\AtendimentoServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
