@@ -13,12 +13,6 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('modulo.Cadastro') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>{{ __('Cadastros') }}</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

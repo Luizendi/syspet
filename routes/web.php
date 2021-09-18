@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
+Route::get('/cadastros', 'Modules\Cadastro\Http\Controllers\CadastroController@index')->name("modulo.Cadastro");
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
 		return view('pages.table_list');

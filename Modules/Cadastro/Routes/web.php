@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('cadastro')->group(function() {
     Route::get('/', 'CadastroController@index');
 });

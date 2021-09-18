@@ -14,7 +14,7 @@ class CadastroController extends Controller
      */
     public function index()
     {
-        return view('cadastro::index');
+        return view('cadastro::dashboard');
     }
 
     /**
