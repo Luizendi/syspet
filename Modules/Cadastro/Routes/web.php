@@ -13,9 +13,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('cadastro')->group(function() {
+Route::prefix('cadastro')->group(function () {
     Route::get('/', 'CadastroController@index');
 
+    Route::prefix('pessoa')->group(function () {
+        route::get('/cadpessoa', 'CadastroController@CadPessoa')->name('pessoa');
+    });
     Route::prefix('especies')->group(function () {
         Route::get('/', 'EspeciesController@index')->name('especies.index');
         Route::get('/new', 'EspeciesController@create')->name('especies.new');
