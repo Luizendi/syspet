@@ -20,10 +20,10 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'pessoa' ? 'show' : '' }}" id="Pessoa">
+                <div class="collapse {{ $activePage == 'clientes' ? 'show' : '' }}" id="Pessoa">
                     <ul class="nav">
-                        <li class="nav-item {{ $activePage == 'pessoa' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('pessoa') }}">
+                        <li class="nav-item {{ $activePage == 'clientes' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('clientes.index') }}">
                                 <span class="sidebar-mini"> C </span>
                                 <span class="sidebar-normal"> Clientes
                                 </span>

@@ -79,6 +79,11 @@ class CadastroController extends Controller
 
     public function CadPessoa()
     {
-        return view('cadastro::cadpessoa');
+        return view('cadastro::pages.Pessoa.cadpessoa');
+    }
+
+    public function indexPessoa()
+    {
+        return view('cadastro::pages.Pessoa.index');
     }
 }
