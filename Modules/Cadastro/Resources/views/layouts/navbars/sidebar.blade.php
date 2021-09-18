@@ -9,15 +9,34 @@
             <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="material-icons">dashboard</i>
-                    <p>{{ __('Dashboard') }}</p>
+                    <p>{{ __('Home') }}</p>
                 </a>
             </li>
-
-            <li class="nav-item{{ $activePage == 'pessoa' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('pessoa') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>{{ __('Pessoa') }}</p>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#Pessoa">
+                    <i class="material-icons">account_tree</i>
+                    <p> Pessoa
+                        <b class="caret"></b>
+                    </p>
                 </a>
+                <div class="collapse {{ $activePage == 'pessoa' ? 'show' : '' }}" id="Pessoa">
+                    <ul class="nav">
+                        <li class="nav-item {{ $activePage == 'pessoa' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('pessoa') }}">
+                                <span class="sidebar-mini"> C </span>
+                                <span class="sidebar-normal"> Clientes
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">
+                                <span class="sidebar-mini"> F </span>
+                                <span class="sidebar-normal"> Fornecedor
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" data-toggle="collapse" href="#tabelas">
@@ -44,8 +63,7 @@
                         </li>
                     </ul>
                 </div>
-
-
+            </li>
         </ul>
     </div>
 </div>

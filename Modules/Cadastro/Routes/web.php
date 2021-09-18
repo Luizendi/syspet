@@ -17,7 +17,7 @@ Route::prefix('cadastro')->group(function () {
     Route::get('/', 'CadastroController@index');
 
     Route::prefix('pessoa')->group(function () {
-        route::get('/cadpessoa', 'CadastroController@CadPessoa')->name('pessoa');
+        route::get('/CadCliente', 'CadastroController@CadPessoa')->name('pessoa');
     });
     Route::prefix('especies')->group(function () {
         Route::get('/', 'EspeciesController@index')->name('especies.index');

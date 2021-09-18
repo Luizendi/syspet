@@ -6,27 +6,50 @@
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4>
-                    <div class="card-title"><strong>Pessoa</Strong></div>
+                    <div class="card-title"><strong>Cliente</Strong></div>
                 </h4>
-                <div class="card-category">Cadastro de Pessoa</div>
+                <div class="card-category">Cadastro de Cliente</div>
             </div>
             <div class="card-body">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"></span>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Nome/Razão Social</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">CPF/CNPJ</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">RG/IE</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Endereço</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">CEP</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Cidade</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Estado</label>
+                            <input type="text" class="form-control" id="inputEmail4">
+                        </div>
+
                     </div>
-                    <input type="text" class="form-control" placeholder="Insira nome ou razão social" aria-label="Insira nome ou razão social" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Insira CPF ou CNPJ" aria-label="Insira CPF ou CNPJ" aria-describedby="basic-addon1">
+                </form>
+                <div class="card-footer">
+                    <input class="btn btn-primary ml-auto mr-auto" type="button" value="Cancelar">
+                    <input class="btn btn-primary ml-auto mr-auto" type="button" value="Salvar">
                 </div>
             </div>
-            <div class="card-footer">
-                <input class="btn btn-primary ml-auto mr-auto" type="button" value="Salvar">
-            </div>
+
         </div>
     </div>
 </div>
