@@ -25,7 +25,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <select name="Especie" id="especie" class="form-control selectpicker">
+                                            <select name="Especie" id="especie" class="form-control selectpicker"
+                                                data-style="btn-primary" data-live-search="true">
                                                 @forelse ($especies as $item)
                                                     <option value="{{ $item->cd_especie }}">{{ $item->nome }}</option>
                                                 @empty

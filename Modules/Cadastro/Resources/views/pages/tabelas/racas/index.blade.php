@@ -32,7 +32,8 @@
                                     <td class="text-center">{{ $item->nome }}</td>
                                     <td class="text-center">{{ $item->especie }}</td>
                                     <td class="text-right">
-                                        <a href="{{route('especies.edit', $item->cd_raca)}}" class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
+                                        <a href="{{ route('racas.edit', $item->cd_raca) }}"
+                                            class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
                                             data-placement="bottom" title="Editar"><i class="material-icons">edit</i></a>
                                         <a href="#" class="btn btn-link btn-danger btn-just-icon" data-toggle="tooltip"
                                             data-placement="bottom" title="Excluir"><i class="material-icons">delete</i></a>
@@ -66,6 +67,17 @@
             }, 1000);
 
             $('[data-toggle="tooltip"]').tooltip();
+            $('#table').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [20, 30, 50, -1],
+                    [20, 30, 50, "Todos"]
+                ],
+                responsive: true,
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
+                },
+            });
         });
     </script>
 @endpush

@@ -40,7 +40,18 @@ class RacasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $racas = Racas::create([
+            "fk_especie" => $request->input("Especie"),
+            "nome" => $request->input("Nome"),
+            "ativo" => "S",
+            "created_at" => now()
+        ]);
+
+        if($racas){
+            return json_encode("SUCCESS");
+        }else{
+            return json_encode("ERROR");
+        }
     }
 
     /**
@@ -60,7 +71,8 @@ class RacasController extends Controller
      */
     public function edit(Racas $raca)
     {
-        return view('cadastro::pages.tabelas.racas.alter', compact('racas'));
+        $especies = DB::table('tbl_especies')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.tabelas.racas.alter', compact('raca'), ['especies' => $especies]);
     }
 
     /**
