@@ -1,5 +1,4 @@
-<div class="sidebar" data-color="green" data-background-color="white"
-    data-image="{{ asset('material') }}/img/sidebar-1.jpg">
+<div class="sidebar" data-color="green" data-background-color="white" data-image="{{ asset('material') }}/img/sidebar-1.jpg">
     <div class="logo">
         <a href="{{ route('home') }}" class="simple-text logo-normal">
             {{ __('Syspet') }}
@@ -11,6 +10,12 @@
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="material-icons">dashboard</i>
                     <p>{{ __('Dashboard') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'pessoa' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('pessoa') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>{{ __('Pessoa') }}</p>
                 </a>
             </li>
         </ul>

@@ -76,4 +76,9 @@ class CadastroController extends Controller
     {
         //
     }
+
+    public function CadPessoa()
+    {
+        return view('cadastro::cadpessoa');
+    }
 }
