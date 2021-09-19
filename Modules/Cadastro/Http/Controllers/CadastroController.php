@@ -100,11 +100,11 @@ class CadastroController extends Controller
         $especie = Clientes::create([
             "nome" => $request->input("Nome"),
             "endereco"=>$request->input("Endereco"),
-            "cidade"=>$request->input("Endereco"),
-            "estado"=>$request->input("Endereco"),
-            "cep"=>$request->input("Endereco"),
-            "cnpjcpf"=>$request->input("Endereco"),
-            "ierg"=>$request->input("Endereco"),
+            "cidade"=>$request->input("Cidade"),
+            "estado"=>$request->input("Estado"),
+            "cep"=>$request->input("CEP"),
+            "cnpjcpf"=>$request->input("CnpjCpf"),
+            "ierg"=>$request->input("IeRg"),
             "ativo" => "S",
             "created_at" => now()
         ]);
