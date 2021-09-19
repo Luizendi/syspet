@@ -97,7 +97,7 @@ class CadastroController extends Controller
      */
     public function storeCliente(Request $request)
     {
-        $especie = Clientes::create([
+        $clientes = Clientes::create([
             "nome" => $request->input("Nome"),
             "endereco"=>$request->input("Endereco"),
             "cidade"=>$request->input("Cidade"),
@@ -109,7 +109,7 @@ class CadastroController extends Controller
             "created_at" => now()
         ]);
 
-        if($especie){
+        if($clientes){
             return json_encode("SUCCESS");
         }else{
             return json_encode("ERROR");
