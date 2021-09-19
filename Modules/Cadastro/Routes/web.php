@@ -19,7 +19,7 @@ Route::prefix('cadastro')->group(function () {
     Route::prefix('pessoa')->group(function () {
         route::get('/ListaCliente', 'CadastroController@CadPessoa')->name('pessoa');
         route::get('/', 'CadastroController@indexPessoa')->name('clientes.index');
-        Route::post('/CadCliente', 'CadastroController@store')->name('clientes.insert');
+        Route::post('/CadCliente', 'CadastroController@storeCliente')->name('clientes.insert');
     });
 
     Route::prefix('especies')->group(function () {
