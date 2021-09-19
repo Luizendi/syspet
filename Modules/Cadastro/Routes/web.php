@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('cadastro')->group(function () {
-    Route::get('/', 'CadastroController@index');
+    Route::get('/', 'CadastroController@index')->name('cadastro.home');
 
     Route::prefix('pessoa')->group(function () {
         route::get('/cadpessoa', 'CadastroController@CadPessoa')->name('pessoa');

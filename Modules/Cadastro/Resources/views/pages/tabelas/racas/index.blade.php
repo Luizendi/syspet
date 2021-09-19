@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header card-header-icon card-header-primary">
                 <div class="card-icon">
-                    <i class="material-icons">view_module</i>
+                    <i class="material-icons">home</i>
                 </div>
                 <h4 class="card-title ">Lista de Raças</h4>
             </div>

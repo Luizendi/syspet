@@ -8,7 +8,7 @@
                     <div class="card ">
                         <div class="card-header card-header-primary card-header-icon">
                             <div class="card-icon">
-                                <i class="material-icons">assessment</i>
+                                <i class="material-icons">add</i>
                             </div>
                             <h4 class="card-title">Nova Espécie</h4>
                         </div>
