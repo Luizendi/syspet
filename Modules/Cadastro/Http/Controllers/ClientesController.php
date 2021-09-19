@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Cadastro\Entities\Clientes;
 
-class CadastroController extends Controller
+class ClientesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class CadastroController extends Controller
      */
     public function index()
     {
-        return view('cadastro::dashboard');
+        $clientes = Clientes::all();
+        return view('cadastro::pages.cadastros.clientes.index', ['clientes' => $clientes]);
     }
 
     /**
@@ -24,7 +25,7 @@ class CadastroController extends Controller
      */
     public function create()
     {
-        return view('cadastro::create');
+        return view('cadastro::pages.cadastros.clientes.new');
     }
 
     /**
@@ -34,7 +35,24 @@ class CadastroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $clientes = Clientes::create([
+            "nome" => $request->input("Nome"),
+            "endereco"=>$request->input("Endereco"),
+            "cidade"=>$request->input("Cidade"),
+            "estado"=>$request->input("Estado"),
+            "cep"=>$request->input("CEP"),
+            "cnpjcpf"=>$request->input("CnpjCpf"),
+            "ierg"=>$request->input("IeRg"),
+            "ativo" => "S",
+            "created_at" => now(),
+            "updated_at" => now()
+        ]);
+
+        if($clientes){
+            return json_encode("SUCCESS");
+        }else{
+            return json_encode("ERROR");
+        }
     }
 
     /**
@@ -52,9 +70,9 @@ class CadastroController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Clientes $clientes)
     {
-        return view('cadastro::edit');
+        return view('cadastro::pages.cadastros.clientes.alter', compact('clientes'));
     }
 
     /**

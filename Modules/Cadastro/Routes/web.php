@@ -16,11 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('cadastro')->group(function () {
     Route::get('/', 'CadastroController@index')->name('cadastro.home');
 
-    Route::prefix('pessoa')->group(function () {
-        route::get('/ListaCliente', 'CadastroController@CadPessoa')->name('pessoa');
-        route::get('/', 'CadastroController@indexPessoa')->name('clientes.index');
-        Route::post('/CadCliente', 'CadastroController@storeCliente')->name('clientes.insert');
-        Route::get('/Cliente/{cliente}', 'CadastroController@editCliente')->name('clientes.edit');
+    Route::prefix('animais')->group(function () {
+        Route::get('/', 'AnimaisController@index')->name('animais.index');
+        Route::get('/new', 'AnimaisController@create')->name('animais.new');
+        Route::post('/new', 'AnimaisController@store')->name('animais.insert');
+        Route::get('/edit/{animal}', 'AnimaisController@edit')->name('animais.edit');
+    });
+
+    Route::prefix('clientes')->group(function () {
+        Route::get('/', 'ClientesController@index')->name('clientes.index');
+        Route::get('/new', 'ClientesController@create')->name('clientes.new');
+        Route::post('/new', 'ClientesController@store')->name('clientes.insert');
+        Route::get('/edit/{cliente}', 'ClientesController@edit')->name('clientes.edit');
     });
 
     Route::prefix('especies')->group(function () {

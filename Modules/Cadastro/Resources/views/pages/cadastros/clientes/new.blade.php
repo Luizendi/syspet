@@ -1,4 +1,4 @@
-@extends('cadastro::layouts.app', ['activePage' => 'pessoa', 'titlePage' => __('')])
+@extends('cadastro::layouts.app', ['activePage' => 'clientes', 'titlePage' => __('Novo Cliente')])
 
 @section('content')
 <div class="content">
@@ -8,7 +8,7 @@
                 <div class="card ">
                     <div class="card-header card-header-primary card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">assessment</i>
+                            <i class="material-icons">add</i>
                         </div>
                         <h4 class="card-title">Novo Cliente</h4>
                     </div>

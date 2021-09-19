@@ -10,34 +10,20 @@
             <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('cadastro.home') }}">
                     <i class="material-icons">dashboard</i>
-                    <p>{{ __('Home') }}</p>
+                    <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#Pessoa">
-                    <i class="material-icons">account_tree</i>
-                    <p> Pessoa
-                        <b class="caret"></b>
-                    </p>
+            <li class="nav-item {{ $activePage == 'animais' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('animais.index') }}">
+                    <i class="material-icons">pets</i>
+                    <p>{{ __('Animais') }}</p>
                 </a>
-                <div class="collapse {{ $activePage == 'clientes' ? 'show' : '' }}" id="Pessoa">
-                    <ul class="nav">
-                        <li class="nav-item {{ $activePage == 'clientes' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('clientes.index') }}">
-                                <span class="sidebar-mini"> C </span>
-                                <span class="sidebar-normal"> Clientes
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">
-                                <span class="sidebar-mini"> F </span>
-                                <span class="sidebar-normal"> Fornecedor
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            </li>
+            <li class="nav-item {{ $activePage == 'clientes' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('clientes.index') }}">
+                    <i class="material-icons">person_add</i>
+                    <p>{{ __('Clientes') }}</p>
+                </a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" data-toggle="collapse" href="#tabelas">
@@ -46,12 +32,20 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' ? 'show' : '' }}" id="tabelas">
+                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' ? 'show' : '' }}"
+                    id="tabelas">
                     <ul class="nav">
                         <li class="nav-item {{ $activePage == 'especies' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('especies.index') }}">
                                 <span class="sidebar-mini"> E </span>
                                 <span class="sidebar-normal"> Espécies
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">
+                                <span class="sidebar-mini"> F </span>
+                                <span class="sidebar-normal"> Fornecedores
                                 </span>
                             </a>
                         </li>

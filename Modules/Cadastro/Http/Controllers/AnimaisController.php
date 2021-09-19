@@ -5,9 +5,10 @@ namespace Modules\Cadastro\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Cadastro\Entities\Clientes;
+use Illuminate\Support\Facades\DB;
+use Modules\Cadastro\Entities\Animais;
 
-class CadastroController extends Controller
+class AnimaisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,11 @@ class CadastroController extends Controller
      */
     public function index()
     {
-        return view('cadastro::dashboard');
+        $animais = DB::table('tbl_animais AS a')
+        ->select('a.*', 'r.nome AS raca')
+        ->leftJoin('tbl_racas AS r', 'r.cd_raca', '=', 'a.fk_raca')
+        ->get();
+        return view('cadastro::pages.cadastros.animais.index', ['animais' => $animais]);
     }
 
     /**
@@ -24,7 +29,8 @@ class CadastroController extends Controller
      */
     public function create()
     {
-        return view('cadastro::create');
+        $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes]);
     }
 
     /**
@@ -52,9 +58,9 @@ class CadastroController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Animais $animal)
     {
-        return view('cadastro::edit');
+        return view('cadastro::pages.cadastros.animais.alter', compact('animal'));
     }
 
     /**
