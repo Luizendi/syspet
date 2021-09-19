@@ -27,7 +27,7 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/', 'ClientesController@index')->name('clientes.index');
         Route::get('/new', 'ClientesController@create')->name('clientes.new');
         Route::post('/new', 'ClientesController@store')->name('clientes.insert');
-        Route::get('/edit/{cliente}', 'ClientesController@edit')->name('clientes.edit');
+        Route::get('/edit/{clientes}', 'ClientesController@edit')->name('clientes.edit');
     });
 
     Route::prefix('especies')->group(function () {
