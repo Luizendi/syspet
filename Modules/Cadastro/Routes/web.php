@@ -17,7 +17,10 @@ Route::prefix('cadastro')->group(function () {
     Route::get('/', 'CadastroController@index')->name('cadastro.home');
 
     Route::prefix('pessoa')->group(function () {
-        route::get('/cadpessoa', 'CadastroController@CadPessoa')->name('pessoa');
+        route::get('/ListaCliente', 'CadastroController@CadPessoa')->name('pessoa');
+        route::get('/', 'CadastroController@indexPessoa')->name('clientes.index');
+        Route::post('/CadCliente', 'CadastroController@storeCliente')->name('clientes.insert');
+        Route::get('/Cliente/{cliente}', 'CadastroController@editCliente')->name('clientes.edit');
     });
 
     Route::prefix('especies')->group(function () {
