@@ -14,6 +14,12 @@ class Clientes extends Model
 
     protected $fillable = [
         "nome",
+        "endereco",
+        "cnpjcpf",
+        "ierg",
+        "cep",
+        "cidade",
+        "estado",
         "ativo"
     ];
 }

@@ -26,19 +26,19 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="" class="bmd-label-floating">CPF/CNPJ</label>
-                                        <input type="text" name="CpfCnpj" class="form-control" id="cnpjcpf" required />
+                                        <input type="text" name="CnpjCpf" class="form-control" id="cnpjcpf" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="" class="bmd-label-floating">RG/IE</label>
-                                        <input type="text" name="RgIE" class="form-control" id="ierg" required />
+                                        <input type="text" name="IeRg" class="form-control" id="ierg" required />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="" class="bmd-label-floating">Endereço</label>
-                                        <input type="text" name="Endereço" class="form-control" id="endereco" required />
+                                        <input type="text" name="Endereco" class="form-control" id="endereco" required />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
