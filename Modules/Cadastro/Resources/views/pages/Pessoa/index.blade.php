@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
                 <div class="toolbar">
-                    <a href="{{ route('especies.new') }}" class="btn btn-primary"><i class="material-icons">add</i>
+                    <a href="{{ route('pessoa') }}" class="btn btn-primary"><i class="material-icons">add</i>
                         Novo</a>
                 </div>
                 <div class="material-datatables">
@@ -25,9 +25,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($especies as $item)
+                            @foreach ($clientes as $item)
                                 <tr>
-                                    <td class="text-center">{{ $item->cd_especie }}</td>
+                                    <td class="text-center">{{ $item->cd_cliente }}</td>
                                     <td class="text-center">{{ $item->nome }}</td>
                                     <td class="text-right">
                                         <a href="{{route('especies.edit', $item->cd_especie)}}" class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"

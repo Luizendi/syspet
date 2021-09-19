@@ -5,6 +5,7 @@ namespace Modules\Cadastro\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Cadastro\Entities\Clientes;
 
 class CadastroController extends Controller
 {
@@ -84,6 +85,7 @@ class CadastroController extends Controller
 
     public function indexPessoa()
     {
-        return view('cadastro::pages.Pessoa.index');
+        $clientes = Clientes::all();
+        return view('cadastro::pages.Pessoa.index', ['clientes' => $clientes]);
     }
 }
