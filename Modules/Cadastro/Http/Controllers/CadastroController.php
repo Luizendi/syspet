@@ -106,7 +106,8 @@ class CadastroController extends Controller
             "cnpjcpf"=>$request->input("CnpjCpf"),
             "ierg"=>$request->input("IeRg"),
             "ativo" => "S",
-            "created_at" => now()
+            "created_at" => now(),
+            "updated_at" => now()
         ]);
 
         if($clientes){
@@ -114,5 +115,15 @@ class CadastroController extends Controller
         }else{
             return json_encode("ERROR");
         }
+    }
+
+       /**
+     * Show the form for editing the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function editCliente(Clientes $clientes)
+    {
+        return view('cadastro::pages.tabelas.clientes.alter', compact('cliente'));
     }
 }
