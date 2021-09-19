@@ -88,4 +88,31 @@ class CadastroController extends Controller
         $clientes = Clientes::all();
         return view('cadastro::pages.Pessoa.index', ['clientes' => $clientes]);
     }
+
+
+    /**
+     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return Renderable
+     */
+    public function storeCliente(Request $request)
+    {
+        $especie = Clientes::create([
+            "nome" => $request->input("Nome"),
+            "endereco"=>$request->input("Endereco"),
+            "cidade"=>$request->input("Endereco"),
+            "estado"=>$request->input("Endereco"),
+            "cep"=>$request->input("Endereco"),
+            "cnpjcpf"=>$request->input("Endereco"),
+            "ierg"=>$request->input("Endereco"),
+            "ativo" => "S",
+            "created_at" => now()
+        ]);
+
+        if($especie){
+            return json_encode("SUCCESS");
+        }else{
+            return json_encode("ERROR");
+        }
+    }
 }
