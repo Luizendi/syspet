@@ -5,6 +5,7 @@ namespace Modules\Cadastro\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Modules\Cadastro\Entities\Clientes;
 
 class ClientesController extends Controller
@@ -94,5 +95,24 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function retornaCliente($cliente){
+
+        $clientes = DB::table('tbl_clientes')->where('cd_cliente', '=', $cliente);
+
+        if($clientes->count()>0){
+
+            $clientes = $clientes->first();
+
+            if($clientes->ativo == "S"){
+                return json_encode($clientes);
+            }else{
+                return json_encode("INACTIVE");
+            }
+
+        }else{
+            return json_encode("ERROR");
+        }
     }
 }

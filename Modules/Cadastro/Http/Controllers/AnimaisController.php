@@ -30,7 +30,9 @@ class AnimaisController extends Controller
     public function create()
     {
         $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
-        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes]);
+        $clientes = DB::table('tbl_clientes')->where('ativo', '=', 'S')->get();
+
+        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes, 'clientes' => $clientes]);
     }
 
     /**

@@ -19,15 +19,23 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Código Cliente</label>
-                                            <input type="text" name="CodigoCliente" id="codigoCliente"
-                                                class="form-control" />
+                                            <label for="" class="bmd-label-static">Código Cliente</label>
+                                            <input type="text" name="CodigoCliente" id="idCliente" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Nome</label>
-                                            <input type="text" name="NomeCliente" id="nomeCliente" class="form-control" />
+                                            <label class="bmd-label-static" for="">Cliente</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="NomeCliente"
+                                                    id="nomeCliente" />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-fab btn-round btn-primary"
+                                                        data-toggle="modal" data-target=".bd-clientes-modal-lg">
+                                                        <i class="material-icons">person</i>
+                                                    </button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -40,8 +48,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <select name="Especie" id="especie" class="form-control selectpicker"
-                                                data-style="btn-primary" data-live-search="true">
+                                            <select name="Porte" id="porte" class="form-control selectpicker"
+                                                data-style="btn-primary">
                                                 <option disabled selected>Porte</option>
                                                 @forelse ($portes as $item)
                                                     <option value="{{ $item->cd_porte }}">{{ $item->nome }}</option>
@@ -66,13 +74,59 @@
             </div>
         </div>
     </div>
+
+    @include('cadastro::pages.cadastros.animais.modal.clientes')
 @endsection
 
 @push('js')
     <script>
+        function selecionarCliente(id, nome) {
+            $("#idCliente").val(id);
+            $("#nomeCliente").val(nome);
+            $('.bd-clientes-modal-lg').modal('hide');
+        }
+
         $(document).ready(function() {
             $(".form-control").keyup(function() {
                 $(this).val($(this).val().toUpperCase());
+            });
+
+            $("#idCliente").blur(function() {
+                var idCliente = $(this).val();
+
+
+                var url = '{{ route('api.clientes.unico', ':id') }}'
+                url = url.replace(':id', idCliente)
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $("#nomeCliente").val("Buscando...");
+                    },
+                    success: function(data) {
+                        if (data === "ERROR") {
+                            swal.fire("Cliente não encontrado",
+                                "Verifique o código informado e tente novamente", "error");
+                            $("#nomeCliente").val("");
+                        } else if (data === "INACTIVE") {
+                            swal.fire("Cliente inativo",
+                                "O cliente selecionado está inativo, verifique o cadastro do mesmo e tente novamente",
+                                "error");
+                            $("#nomeCliente").val("");
+                        } else {
+                            $("#idCliente").val(data.cd_cliente);
+                            $("#nomeCliente").val(data.nome);
+                        }
+                    },
+                    error: function() {
+                        swal.fire("Erro interno",
+                            "Ocorreu um erro. Tente novamente ou comunique o suporte",
+                            "error");
+                        $("#nomeCliente").val("");
+                    }
+                });
             });
 
             $("#formCadastro").submit(function(e) {
