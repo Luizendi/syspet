@@ -31,8 +31,12 @@ class AnimaisController extends Controller
     {
         $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
         $clientes = DB::table('tbl_clientes')->where('ativo', '=', 'S')->get();
+        $racas = DB::table('tbl_racas AS r')
+        ->select('r.*', 'e.nome AS especie')
+        ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
+        ->where('r.ativo', '=', 'S')->get();
 
-        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes, 'clientes' => $clientes]);
+        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes, 'clientes' => $clientes, 'racas' => $racas]);
     }
 
     /**

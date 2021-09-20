@@ -40,6 +40,35 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-static">Código Raça</label>
+                                            <input type="text" name="CodigoRaca" id="idRaca" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-static" for="">Raça</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="NomeRaca"
+                                                    id="nomeRaca" />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-fab btn-round btn-primary"
+                                                        data-toggle="modal" data-target=".bd-racas-modal-lg">
+                                                        <i class="material-icons">person</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-static">Espécie</label>
+                                            <input type="text" name="Especie" id="especie" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
@@ -76,6 +105,7 @@
     </div>
 
     @include('cadastro::pages.cadastros.animais.modal.clientes')
+    @include('cadastro::pages.cadastros.animais.modal.racas')
 @endsection
 
 @push('js')
