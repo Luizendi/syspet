@@ -56,6 +56,13 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="nav-item {{ $activePage == 'tiposaltas' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('tiposaltas.index') }}">
+                                <span class="sidebar-mini"> TA </span>
+                                <span class="sidebar-normal"> Tipos de Alta
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

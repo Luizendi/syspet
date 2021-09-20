@@ -36,11 +36,18 @@ Route::prefix('cadastro')->group(function () {
         Route::post('/new', 'EspeciesController@store')->name('especies.insert');
         Route::get('/edit/{especie}', 'EspeciesController@edit')->name('especies.edit');
     });
-    
+
     Route::prefix('racas')->group(function () {
         Route::get('/', 'RacasController@index')->name('racas.index');
         Route::get('/new', 'RacasController@create')->name('racas.new');
         Route::post('/new', 'RacasController@store')->name('racas.insert');
         Route::get('/edit/{raca}', 'RacasController@edit')->name('racas.edit');
+    });
+
+    Route::prefix('tipos-altas')->group(function () {
+        Route::get('/', 'TiposAltasController@index')->name('tiposaltas.index');
+        Route::get('/new', 'TiposAltasController@create')->name('tiposaltas.new');
+        Route::post('/new', 'TiposAltasController@store')->name('tiposaltas.insert');
+        Route::get('/edit/{tipoalta}', 'TiposAltasController@edit')->name('tiposaltas.edit');
     });
 });
