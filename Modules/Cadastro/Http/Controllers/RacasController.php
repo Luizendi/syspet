@@ -17,9 +17,9 @@ class RacasController extends Controller
     public function index()
     {
         $racas = DB::table('tbl_racas AS r')
-        ->select('r.*', 'e.nome AS especie')
-        ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
-        ->get();
+            ->select('r.*', 'e.nome AS especie')
+            ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
+            ->get();
         return view('cadastro::pages.tabelas.racas.index', ['racas' => $racas]);
     }
 
@@ -47,9 +47,9 @@ class RacasController extends Controller
             "created_at" => now()
         ]);
 
-        if($racas){
+        if ($racas) {
             return json_encode("SUCCESS");
-        }else{
+        } else {
             return json_encode("ERROR");
         }
     }
@@ -94,5 +94,27 @@ class RacasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function retornaRaca($raca)
+    {
+
+        $racas = DB::table('tbl_racas AS r')
+        ->select('r.*', 'e.nome AS especie')
+        ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
+        ->where('r.cd_raca', '=', $raca);
+
+        if ($racas->count() > 0) {
+
+            $racas = $racas->first();
+
+            if ($racas->ativo == "S") {
+                return json_encode($racas);
+            } else {
+                return json_encode("INACTIVE");
+            }
+        } else {
+            return json_encode("ERROR");
+        }
     }
 }

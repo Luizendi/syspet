@@ -13,7 +13,7 @@
                     <a href="#" class="btn btn-primary"><i class="material-icons">person</i> Nova raça</a>
                 </div>
                 <div class="material-datatables">
-                    <table id="tablePacientes" class="table table-no-bordered table-hover" cellspacing="0" width="100%"
+                    <table id="table" class="table table-no-bordered table-hover" cellspacing="0" width="100%"
                         style="width:100%">
                         <thead class="text-primary">
                             <tr>
@@ -32,8 +32,8 @@
                                     <td class="text-right"><a href="#"
                                             class="btn btn-link btn-success btn-just-icon confirm" data-toggle="tooltip"
                                             data-placement="bottom"
-                                            onclick="selecionarRaca({{ $item->cd_raca }}, '{{ $item->nome }}')"
-                                            title="Selecionar Paciente"><i class="material-icons">done</i></a></td>
+                                            onclick="selecionarRaca({{ $item->cd_raca }}, '{{ $item->nome }}', '{{ $item->especie }}')"
+                                            title="Selecionar Raça"><i class="material-icons">done</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

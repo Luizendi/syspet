@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Pacientes</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,7 +13,7 @@
                     <a href="#" class="btn btn-primary"><i class="material-icons">person</i> Novo cliente</a>
                 </div>
                 <div class="material-datatables">
-                    <table id="tablePacientes" class="table table-no-bordered table-hover" cellspacing="0" width="100%"
+                    <table id="table" class="table table-no-bordered table-hover" cellspacing="0" width="100%"
                         style="width:100%">
                         <thead class="text-primary">
                             <tr>
@@ -33,7 +33,7 @@
                                             class="btn btn-link btn-success btn-just-icon confirm" data-toggle="tooltip"
                                             data-placement="bottom"
                                             onclick="selecionarCliente({{ $item->cd_cliente }}, '{{ $item->nome }}')"
-                                            title="Selecionar Paciente"><i class="material-icons">done</i></a></td>
+                                            title="Selecionar Cliente"><i class="material-icons">done</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -21,3 +21,7 @@ Route::middleware('auth:api')->get('/cadastro', function (Request $request) {
 Route::prefix('clientes')->group(function () {
     Route::get('/{cliente}', 'ClientesController@retornaCliente')->name('api.clientes.unico');
 });
+
+Route::prefix('racas')->group(function () {
+    Route::get('/{raca}', 'RacasController@retornaRaca')->name('api.racas.unico');
+});
