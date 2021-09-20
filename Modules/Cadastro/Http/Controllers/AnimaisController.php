@@ -55,7 +55,7 @@ class AnimaisController extends Controller
             "castrado" => $request->input("Castrado"),
             "nome" => $request->input("Nome"),
             "pelagem" => $request->input("Pelagem"),
-            "data_nascimento" => $request->input("DataNascimento"),
+            "data_nascimento" => date('Y/d/m', strtotime($request->input("DataNascimento"))),
             "ativo" => "S",
         ]);
 

@@ -23,6 +23,7 @@
                                 <th class="text-center">Nome</th>
                                 <th class="text-center">Raça</th>
                                 <th class="text-center">Espécie</th>
+                                <th class="text-center">Data Nascimento</th>
                                 <th class="text-center">Situação</th>
                                 <th class="disabled-sorting text-right">Ações</th>
                             </tr>
@@ -34,6 +35,7 @@
                                     <td class="text-center">{{ $item->nome }}</td>
                                     <td class="text-center">{{ $item->raca }}</td>
                                     <td class="text-center">{{ $item->especie }}</td>
+                                    <td class="text-center">{{ date('d/m/Y', strtotime($item->data_nascimento)) }}</td>
                                     <td class="text-center"><span
                                             class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
                                     </td>

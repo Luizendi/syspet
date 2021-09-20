@@ -25,7 +25,7 @@ class TiposAltasController extends Controller
      */
     public function create()
     {
-        return view('cadastro::create');
+        return view('cadastro::pages.tabelas.tiposaltas.new');
     }
 
     /**
@@ -55,7 +55,7 @@ class TiposAltasController extends Controller
      */
     public function edit($id)
     {
-        return view('cadastro::edit');
+        return view('cadastro::pages.tabelas.tiposaltas.alter');
     }
 
     /**
