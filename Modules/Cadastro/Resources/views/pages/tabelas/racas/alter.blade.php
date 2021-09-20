@@ -17,7 +17,14 @@
                             @method("POST")
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Código</label>
+                                            <input type="text" name="Codigo" class="form-control" id="codigo"
+                                                value="{{ $raca->cd_raca }}" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
                                             <input type="text" name="Nome" class="form-control" id="nome"
@@ -35,6 +42,19 @@
                                                 @empty
                                                     <option disabled>Não existe nenhuma espécie cadastrada</option>
                                                 @endforelse
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <select name="Ativo" id="ativo" class="form-control selectpicker"
+                                                data-style="btn-primary">
+                                                <option value="S" {{ $raca->ativo == 'S' ? 'selected' : '' }}>Ativo
+                                                </option>
+                                                <option value="N" {{ $raca->ativo == 'N' ? 'selected' : '' }}>Inativo
+                                                </option>
                                             </select>
                                         </div>
                                     </div>

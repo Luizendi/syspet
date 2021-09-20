@@ -21,6 +21,7 @@
                             <tr>
                                 <th class="text-center">Código</th>
                                 <th class="text-center">Nome</th>
+                                <th class="text-center">Situação</th>
                                 <th class="disabled-sorting text-right">Ações</th>
                             </tr>
                         </thead>
@@ -29,8 +30,12 @@
                                 <tr>
                                     <td class="text-center">{{ $item->cd_cliente }}</td>
                                     <td class="text-center">{{ $item->nome }}</td>
+                                    <td class="text-center"><span
+                                            class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
+                                    </td>
                                     <td class="text-right">
-                                        <a href="{{route('clientes.edit', $item->cd_cliente)}}" class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
+                                        <a href="{{ route('clientes.edit', $item->cd_cliente) }}"
+                                            class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
                                             data-placement="bottom" title="Editar"><i class="material-icons">edit</i></a>
                                         <a href="#" class="btn btn-link btn-danger btn-just-icon" data-toggle="tooltip"
                                             data-placement="bottom" title="Excluir"><i class="material-icons">delete</i></a>

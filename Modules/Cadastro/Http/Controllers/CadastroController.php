@@ -5,6 +5,7 @@ namespace Modules\Cadastro\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Modules\Cadastro\Entities\Clientes;
 
 class CadastroController extends Controller
@@ -15,7 +16,10 @@ class CadastroController extends Controller
      */
     public function index()
     {
-        return view('cadastro::dashboard');
+        $animais = DB::table('tbl_animais')->where('ativo', '=', 'S')->count();
+        $clientes = DB::table('tbl_clientes')->where('ativo', '=', 'S')->count();
+
+        return view('cadastro::dashboard', ['animais' => $animais, 'clientes' => $clientes]);
     }
 
     /**

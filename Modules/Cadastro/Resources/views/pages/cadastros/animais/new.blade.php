@@ -92,7 +92,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Data de Nascimento</label>
-                                            <input type="text" name="DataNascimento" class="form-control"
+                                            <input type="text" name="DataNascimento" class="form-control datepicker"
                                                 id="dataNascimento" required />
                                         </div>
                                     </div>

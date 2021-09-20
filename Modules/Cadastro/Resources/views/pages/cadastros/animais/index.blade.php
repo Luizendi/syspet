@@ -23,6 +23,7 @@
                                 <th class="text-center">Nome</th>
                                 <th class="text-center">Raça</th>
                                 <th class="text-center">Espécie</th>
+                                <th class="text-center">Situação</th>
                                 <th class="disabled-sorting text-right">Ações</th>
                             </tr>
                         </thead>
@@ -33,6 +34,9 @@
                                     <td class="text-center">{{ $item->nome }}</td>
                                     <td class="text-center">{{ $item->raca }}</td>
                                     <td class="text-center">{{ $item->especie }}</td>
+                                    <td class="text-center"><span
+                                            class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
+                                    </td>
                                     <td class="text-right">
                                         <a href="{{ route('animais.edit', $item->cd_animal) }}"
                                             class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
