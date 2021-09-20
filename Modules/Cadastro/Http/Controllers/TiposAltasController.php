@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Modules\Cadastro\Entities\TiposAltas;
 
 class TiposAltasController extends Controller
 {
@@ -35,7 +36,18 @@ class TiposAltasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipoalta = TiposAltas::create([
+            "nome" => $request->input("Nome"),
+            "obito" => $request->input("Obito") == "on" ? "S" : "N",
+            "ativo" => "S",
+            "created_at" => now()
+        ]);
+
+        if ($tipoalta) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**

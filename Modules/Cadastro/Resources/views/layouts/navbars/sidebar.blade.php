@@ -32,7 +32,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' ? 'show' : '' }}"
+                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' || $activePage == 'tipoalta' ? 'show' : '' }}"
                     id="tabelas">
                     <ul class="nav">
                         <li class="nav-item {{ $activePage == 'especies' ? 'active' : '' }}">
@@ -56,7 +56,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item {{ $activePage == 'tiposaltas' ? 'active' : '' }}">
+                        <li class="nav-item {{ $activePage == 'tipoalta' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('tiposaltas.index') }}">
                                 <span class="sidebar-mini"> TA </span>
                                 <span class="sidebar-normal"> Tipos de Alta

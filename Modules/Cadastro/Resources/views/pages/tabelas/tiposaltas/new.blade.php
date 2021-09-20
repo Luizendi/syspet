@@ -27,9 +27,9 @@
                                         <div class="form-group">
                                             <div class="togglebutton">
                                                 <label>
-                                                    <input type="checkbox" checked="">
+                                                    <input type="checkbox" name="Obito">
                                                     <span class="toggle"></span>
-                                                    Obito
+                                                    Óbito
                                                 </label>
                                             </div>
                                         </div>
