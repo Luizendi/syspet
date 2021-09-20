@@ -40,6 +40,34 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-static">Código Raça</label>
+                                            <input type="text" name="CodigoRaca" id="idRaca" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-static" for="">Raça</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="NomeRaca" id="nomeRaca" />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-fab btn-round btn-primary"
+                                                        data-toggle="modal" data-target=".bd-racas-modal-lg">
+                                                        <i class="material-icons">pets</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-static">Espécie</label>
+                                            <input type="text" name="Especie" id="especie" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
@@ -60,6 +88,42 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Data de Nascimento</label>
+                                            <input type="text" name="DataNascimento" class="form-control datepicker"
+                                                id="dataNascimento" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Pelagem</label>
+                                            <input type="text" name="Pelagem" class="form-control" id="pelagem"
+                                                required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select name="Sexo" id="sexo" class="form-control selectpicker"
+                                                data-style="btn-primary">
+                                                <option disabled selected>Sexo</option>
+                                                <option value="F">Fêmea</option>
+                                                <option value="M">Macho</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select name="Castrado" id="castrado" class="form-control selectpicker"
+                                                data-style="btn-primary">
+                                                <option disabled selected>Castrado</option>
+                                                <option value="N">Não</option>
+                                                <option value="S">Sim</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer ">
                                 <button id="btnSalvar" class="btn btn-fill btn-primary">Cadastrar<div
@@ -76,6 +140,7 @@
     </div>
 
     @include('cadastro::pages.cadastros.animais.modal.clientes')
+    @include('cadastro::pages.cadastros.animais.modal.racas')
 @endsection
 
 @push('js')
@@ -86,11 +151,14 @@
             $('.bd-clientes-modal-lg').modal('hide');
         }
 
-        $(document).ready(function() {
-            $(".form-control").keyup(function() {
-                $(this).val($(this).val().toUpperCase());
-            });
+        function selecionarRaca(id, nome, especie) {
+            $("#idRaca").val(id);
+            $("#nomeRaca").val(nome);
+            $("#especie").val(especie);
+            $('.bd-racas-modal-lg').modal('hide');
+        }
 
+        $(document).ready(function() {
             $("#idCliente").blur(function() {
                 var idCliente = $(this).val();
 
@@ -129,13 +197,56 @@
                 });
             });
 
+            $("#idRaca").blur(function() {
+                var idRaca = $(this).val();
+
+
+                var url = '{{ route('api.racas.unico', ':id') }}'
+                url = url.replace(':id', idRaca)
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $("#nomeRaca").val("Buscando...");
+                        $("#especie").val("Buscando...");
+                    },
+                    success: function(data) {
+                        if (data === "ERROR") {
+                            swal.fire("Cliente não encontrado",
+                                "Verifique o código informado e tente novamente", "error");
+                            $("#nomeRaca").val("");
+                            $("#especie").val("");
+                        } else if (data === "INACTIVE") {
+                            swal.fire("Raça inativa",
+                                "A raça selecionado está inativo, verifique o cadastro do mesmo e tente novamente",
+                                "error");
+                            $("#nomeRaca").val("");
+                            $("#especie").val("");
+                        } else {
+                            $("#idRaca").val(data.cd_raca);
+                            $("#nomeRaca").val(data.nome);
+                            $("#especie").val(data.especie);
+                        }
+                    },
+                    error: function() {
+                        swal.fire("Erro interno",
+                            "Ocorreu um erro. Tente novamente ou comunique o suporte",
+                            "error");
+                        $("#nomeRaca").val("");
+                        $("#especie").val("");
+                    }
+                });
+            });
+
             $("#formCadastro").submit(function(e) {
                 e.preventDefault();
 
                 var form = $(this);
 
                 $.ajax({
-                    url: "{{ route('racas.insert') }}",
+                    url: "{{ route('animais.insert') }}",
                     type: "POST",
                     data: form.serialize(),
                     dataType: "JSON",
@@ -148,7 +259,7 @@
                             swal("Cadastro realizado!", "Novo registro inserido com sucesso",
                                 "success").then((value) => {
                                 window.location.href =
-                                    "{{ route('racas.index') }}";
+                                    "{{ route('animais.index') }}";
                                 $("#btnSalvar").html("Salvar");
                                 $("#btnSalvar").prop("disabled", false);
                             });

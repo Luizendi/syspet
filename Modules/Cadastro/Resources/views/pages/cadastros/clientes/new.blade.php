@@ -78,9 +78,6 @@
 @push('js')
 <script>
     $(document).ready(function() {
-        $(".form-control").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
 
         $("#formCadastroCliente").submit(function(e) {
             e.preventDefault();

@@ -1,4 +1,4 @@
-@extends('cadastro::layouts.app', ['activePage' => 'racas', 'titlePage' => 'Editar Raça'])
+@extends('cadastro::layouts.app', ['activePage' => 'tipoalta', 'titlePage' => 'Novo Tipo de Alta'])
 
 @section('content')
     <div class="content">
@@ -8,54 +8,30 @@
                     <div class="card ">
                         <div class="card-header card-header-primary card-header-icon">
                             <div class="card-icon">
-                                <i class="material-icons">alt_route</i>
+                                <i class="material-icons">add</i>
                             </div>
-                            <h4 class="card-title">Editar Raça</h4>
+                            <h4 class="card-title">Novo Tipo de Alta</h4>
                         </div>
                         <form id="formCadastro">
                             @csrf
                             @method("POST")
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-1">
-                                        <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Código</label>
-                                            <input type="text" name="Codigo" class="form-control" id="codigo"
-                                                value="{{ $raca->cd_raca }}" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
-                                            <input type="text" name="Nome" class="form-control" id="nome"
-                                                value="{{ $raca->nome }}" required />
+                                            <input type="text" name="Nome" class="form-control" id="nome" required />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <select name="Especie" id="especie" class="form-control selectpicker"
-                                                data-style="btn-primary" data-live-search="true">
-                                                @forelse ($especies as $item)
-                                                    <option value="{{ $item->cd_especie }}"
-                                                        {{ $raca->fk_especie == $item->cd_especie ? 'selected' : '' }}>
-                                                        {{ $item->nome }}</option>
-                                                @empty
-                                                    <option disabled>Não existe nenhuma espécie cadastrada</option>
-                                                @endforelse
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <select name="Ativo" id="ativo" class="form-control selectpicker"
-                                                data-style="btn-primary">
-                                                <option value="S" {{ $raca->ativo == 'S' ? 'selected' : '' }}>Ativo
-                                                </option>
-                                                <option value="N" {{ $raca->ativo == 'N' ? 'selected' : '' }}>Inativo
-                                                </option>
-                                            </select>
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input type="checkbox" name="Obito">
+                                                    <span class="toggle"></span>
+                                                    Óbito
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +41,7 @@
                                         class="ripple-container">
                                     </div>
                                 </button>
-                                <a href="{{ route('racas.index') }}" class="btn btn-fill btn-secondary">Cancelar</a>
+                                <a href="{{ route('tiposaltas.index') }}" class="btn btn-fill btn-secondary">Cancelar</a>
                             </div>
                         </form>
                     </div>
@@ -84,7 +60,7 @@
                 var form = $(this);
 
                 $.ajax({
-                    url: "#",
+                    url: "{{ route('tiposaltas.insert') }}",
                     type: "POST",
                     data: form.serialize(),
                     dataType: "JSON",
@@ -97,7 +73,7 @@
                             swal("Cadastro realizado!", "Novo registro inserido com sucesso",
                                 "success").then((value) => {
                                 window.location.href =
-                                    "{{ route('racas.index') }}";
+                                    "{{ route('tiposaltas.index') }}";
                                 $("#btnSalvar").html("Salvar");
                                 $("#btnSalvar").prop("disabled", false);
                             });

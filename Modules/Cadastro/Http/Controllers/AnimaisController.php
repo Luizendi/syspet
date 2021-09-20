@@ -17,9 +17,10 @@ class AnimaisController extends Controller
     public function index()
     {
         $animais = DB::table('tbl_animais AS a')
-        ->select('a.*', 'r.nome AS raca')
-        ->leftJoin('tbl_racas AS r', 'r.cd_raca', '=', 'a.fk_raca')
-        ->get();
+            ->select('a.*', 'r.nome AS raca', 'e.nome AS especie')
+            ->leftJoin('tbl_racas AS r', 'r.cd_raca', '=', 'a.fk_raca')
+            ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
+            ->get();
         return view('cadastro::pages.cadastros.animais.index', ['animais' => $animais]);
     }
 
@@ -31,8 +32,12 @@ class AnimaisController extends Controller
     {
         $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
         $clientes = DB::table('tbl_clientes')->where('ativo', '=', 'S')->get();
+        $racas = DB::table('tbl_racas AS r')
+            ->select('r.*', 'e.nome AS especie')
+            ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
+            ->where('r.ativo', '=', 'S')->get();
 
-        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes, 'clientes' => $clientes]);
+        return view('cadastro::pages.cadastros.animais.new', ['portes' => $portes, 'clientes' => $clientes, 'racas' => $racas]);
     }
 
     /**
@@ -42,7 +47,23 @@ class AnimaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $animais = Animais::create([
+            "fk_cliente" => $request->input("CodigoCliente"),
+            "fk_raca" => $request->input("CodigoRaca"),
+            "fk_porte" => $request->input("Porte"),
+            "sexo" => $request->input("Sexo"),
+            "castrado" => $request->input("Castrado"),
+            "nome" => $request->input("Nome"),
+            "pelagem" => $request->input("Pelagem"),
+            "data_nascimento" => date('Y/d/m', strtotime($request->input("DataNascimento"))),
+            "ativo" => "S",
+        ]);
+
+        if ($animais) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**

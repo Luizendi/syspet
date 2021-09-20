@@ -32,6 +32,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <select name="Ativo" id="ativo" class="form-control selectpicker"
+                                                data-style="btn-primary">
+                                                <option value="S" {{ $especie->ativo == 'S' ? 'selected' : '' }}>Ativo
+                                                </option>
+                                                <option value="N" {{ $especie->ativo == 'N' ? 'selected' : '' }}>Inativo
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer ">
                                 <button id="btnSalvar" class="btn btn-fill btn-primary">Cadastrar<div
@@ -51,10 +64,6 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            $(".form-control").keyup(function() {
-                $(this).val($(this).val().toUpperCase());
-            });
-
             $("#formCadastro").submit(function(e) {
                 e.preventDefault();
 

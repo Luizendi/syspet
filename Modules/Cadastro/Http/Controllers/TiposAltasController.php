@@ -6,9 +6,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Modules\Cadastro\Entities\Racas;
+use Modules\Cadastro\Entities\TiposAltas;
 
-class RacasController extends Controller
+class TiposAltasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,8 @@ class RacasController extends Controller
      */
     public function index()
     {
-        $racas = DB::table('tbl_racas AS r')
-            ->select('r.*', 'e.nome AS especie')
-            ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
-            ->get();
-        return view('cadastro::pages.tabelas.racas.index', ['racas' => $racas]);
+        $altas = DB::table('tbl_tiposaltas')->get();
+        return view('cadastro::pages.tabelas.tiposaltas.index', ['altas' => $altas]);
     }
 
     /**
@@ -29,8 +26,7 @@ class RacasController extends Controller
      */
     public function create()
     {
-        $especies = DB::table('tbl_especies')->where('ativo', '=', 'S')->get();
-        return view('cadastro::pages.tabelas.racas.new', ['especies' => $especies]);
+        return view('cadastro::pages.tabelas.tiposaltas.new');
     }
 
     /**
@@ -40,14 +36,14 @@ class RacasController extends Controller
      */
     public function store(Request $request)
     {
-        $racas = Racas::create([
-            "fk_especie" => $request->input("Especie"),
+        $tipoalta = TiposAltas::create([
             "nome" => $request->input("Nome"),
+            "obito" => $request->input("Obito") == "on" ? "S" : "N",
             "ativo" => "S",
             "created_at" => now()
         ]);
 
-        if ($racas) {
+        if ($tipoalta) {
             return json_encode("SUCCESS");
         } else {
             return json_encode("ERROR");
@@ -69,10 +65,9 @@ class RacasController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit(Racas $raca)
+    public function edit($id)
     {
-        $especies = DB::table('tbl_especies')->where('ativo', '=', 'S')->get();
-        return view('cadastro::pages.tabelas.racas.alter', compact('raca'), ['especies' => $especies]);
+        return view('cadastro::pages.tabelas.tiposaltas.alter');
     }
 
     /**
@@ -94,27 +89,5 @@ class RacasController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function retornaRaca($raca)
-    {
-
-        $racas = DB::table('tbl_racas AS r')
-        ->select('r.*', 'e.nome AS especie')
-        ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
-        ->where('r.cd_raca', '=', $raca);
-
-        if ($racas->count() > 0) {
-
-            $racas = $racas->first();
-
-            if ($racas->ativo == "S") {
-                return json_encode($racas);
-            } else {
-                return json_encode("INACTIVE");
-            }
-        } else {
-            return json_encode("ERROR");
-        }
     }
 }
