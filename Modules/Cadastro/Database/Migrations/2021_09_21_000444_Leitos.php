@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class Leitos extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tbl_leitos', function (Blueprint $table) {
+            $table->bigIncrements('cd_leito');
+            $table->bigInteger('fk_porte')->unsigned();
+            $table->string('nome');
+            $table->string('isolamento', 1, ['S', 'N'])->default('N');
+            $table->string('ativo', 1, ['S', 'N'])->default('S');
+            $table->timestamps();
+
+            $table->foreign('fk_porte')->references('cd_porte')->on('tbl_portes');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tbl_leitos');
+    }
+}

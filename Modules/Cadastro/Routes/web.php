@@ -37,6 +37,13 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/edit/{especie}', 'EspeciesController@edit')->name('especies.edit');
     });
 
+    Route::prefix('leitos')->group(function () {
+        Route::get('/', 'LeitosController@index')->name('leitos.index');
+        Route::get('/new', 'LeitosController@create')->name('leitos.new');
+        Route::post('/new', 'LeitosController@store')->name('leitos.insert');
+        Route::get('/edit/{leito}', 'LeitosController@edit')->name('leitos.edit');
+    });
+
     Route::prefix('racas')->group(function () {
         Route::get('/', 'RacasController@index')->name('racas.index');
         Route::get('/new', 'RacasController@create')->name('racas.new');

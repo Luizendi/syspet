@@ -32,7 +32,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' || $activePage == 'tipoalta' ? 'show' : '' }}"
+                <div class="collapse {{ $activePage == 'especies' || $activePage == 'leitos' || $activePage == 'racas' || $activePage == 'tipoalta' ? 'show' : '' }}"
                     id="tabelas">
                     <ul class="nav">
                         <li class="nav-item {{ $activePage == 'especies' ? 'active' : '' }}">
@@ -53,6 +53,13 @@
                             <a class="nav-link" href="{{ route('racas.index') }}">
                                 <span class="sidebar-mini"> R </span>
                                 <span class="sidebar-normal"> Raças
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ $activePage == 'leitos' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('leitos.index') }}">
+                                <span class="sidebar-mini"> L </span>
+                                <span class="sidebar-normal"> Leitos
                                 </span>
                             </a>
                         </li>
