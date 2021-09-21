@@ -57,4 +57,11 @@ Route::prefix('cadastro')->group(function () {
         Route::post('/new', 'FornecedoresController@store')->name('fornecedores.insert');
         Route::get('/edit/{fornecedores}', 'FornecedoresController@edit')->name('fornecedores.edit');
     });
+
+    Route::prefix('servicos')->group(function () {
+        Route::get('/', 'ServicosController@index')->name('servicos.index');
+        Route::get('/new', 'ServicosController@create')->name('servicos.new');
+        Route::post('/new', 'ServicosController@store')->name('servicos.insert');
+        Route::get('/edit/{servicos}', 'ServicosController@edit')->name('servicos.edit');
+    });
 });

@@ -1,5 +1,4 @@
-<div class="sidebar" data-color="green" data-background-color="white"
-    data-image="{{ asset('material') }}/img/sidebar-1.jpg">
+<div class="sidebar" data-color="green" data-background-color="white" data-image="{{ asset('material') }}/img/sidebar-1.jpg">
     <div class="logo">
         <a href="{{ route('home') }}" class="simple-text logo-normal">
             {{ __('Syspet') }}
@@ -32,8 +31,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' || $activePage == 'tipoalta' ? 'show' : '' }}"
-                    id="tabelas">
+                <div class="collapse {{ $activePage == 'especies' || $activePage == 'racas' || $activePage == 'tipoalta' ? 'show' : '' }}" id="tabelas">
                     <ul class="nav">
                         <li class="nav-item {{ $activePage == 'especies' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('especies.index') }}">
@@ -60,6 +58,13 @@
                             <a class="nav-link" href="{{ route('tiposaltas.index') }}">
                                 <span class="sidebar-mini"> TA </span>
                                 <span class="sidebar-normal"> Tipos de Alta
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ $activePage == 'servicos' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('servicos.index') }}">
+                                <span class="sidebar-mini"> S </span>
+                                <span class="sidebar-normal"> Serviços
                                 </span>
                             </a>
                         </li>
