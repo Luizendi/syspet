@@ -17,6 +17,7 @@ class Leitos extends Migration
             $table->bigIncrements('cd_leito');
             $table->bigInteger('fk_porte')->unsigned();
             $table->string('nome');
+            $table->string('situacao', 1, ['L', 'O', 'I'])->nullable()->default('L');
             $table->string('isolamento', 1, ['S', 'N'])->default('N');
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
