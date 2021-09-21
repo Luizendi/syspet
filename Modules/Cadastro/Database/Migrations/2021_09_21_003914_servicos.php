@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Portes extends Migration
+class Servicos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class Portes extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_portes', function (Blueprint $table) {
-            $table->bigIncrements('cd_porte');
+        Schema::create('tbl_servicos', function (Blueprint $table) {
+            $table->bigIncrements('cd_servico');
+            $table->bigInteger('fk_sexo')->unsigned();
+            $table->bigInteger('fk_porte')->unsigned();
             $table->string('nome');
-            $table->string('ativo', 1, ['S', 'N'])->default();
+            $table->float('valor');
+            $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class Portes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_portes');
+        Schema::dropIfExists('tbl_servicos');
     }
 }
