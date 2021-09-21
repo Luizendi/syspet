@@ -154,7 +154,7 @@
                                         <h4>Tempo médio de consulta <button type="button" class="btn btn-link btn-primary"
                                                 data-container="body" data-toggle="popover" data-placement="right"
                                                 data-original-title="Tempo médio de consulta"
-                                                data-content="Defina um tempo médio para consulta para que seja criado os horários da agenda."><i
+                                                data-content="Defina um tempo médio de consulta para que seja criado os horários da agenda."><i
                                                     class="material-icons">help</i></button></h4>
                                     </div>
                                 </div>

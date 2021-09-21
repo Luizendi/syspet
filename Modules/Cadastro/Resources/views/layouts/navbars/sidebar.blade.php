@@ -13,6 +13,12 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
+            <li class="nav-item {{ $activePage == 'agendas' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('agendas.index') }}">
+                    <i class="material-icons">today</i>
+                    <p>{{ __('Agendas') }}</p>
+                </a>
+            </li>
             <li class="nav-item {{ $activePage == 'animais' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('animais.index') }}">
                     <i class="material-icons">pets</i>
@@ -32,16 +38,9 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'agendas' || $activePage == 'especies' || $activePage == 'fornecedores' || $activePage == 'leitos' || $activePage == 'racas' || $activePage == 'servicos' || $activePage == 'tipoalta' ? 'show' : '' }}"
+                <div class="collapse {{ $activePage == 'especies' || $activePage == 'fornecedores' || $activePage == 'leitos' || $activePage == 'racas' || $activePage == 'servicos' || $activePage == 'tipoalta' ? 'show' : '' }}"
                     id="tabelas">
                     <ul class="nav">
-                        <li class="nav-item {{ $activePage == 'agendas' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('agendas.index') }}">
-                                <span class="sidebar-mini"> A </span>
-                                <span class="sidebar-normal"> Agendas
-                                </span>
-                            </a>
-                        </li>
                         <li class="nav-item {{ $activePage == 'especies' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('especies.index') }}">
                                 <span class="sidebar-mini"> E </span>
