@@ -27,7 +27,7 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/', 'ClientesController@index')->name('clientes.index');
         Route::get('/new', 'ClientesController@create')->name('clientes.new');
         Route::post('/new', 'ClientesController@store')->name('clientes.insert');
-        Route::get('/edit/{cliente}', 'ClientesController@edit')->name('clientes.edit');
+        Route::get('/edit/{clientes}', 'ClientesController@edit')->name('clientes.edit');
     });
 
     Route::prefix('especies')->group(function () {
@@ -56,5 +56,19 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/new', 'TiposAltasController@create')->name('tiposaltas.new');
         Route::post('/new', 'TiposAltasController@store')->name('tiposaltas.insert');
         Route::get('/edit/{tipoalta}', 'TiposAltasController@edit')->name('tiposaltas.edit');
+    });
+
+    Route::prefix('fornecedores')->group(function () {
+        Route::get('/', 'FornecedoresController@index')->name('fornecedores.index');
+        Route::get('/new', 'FornecedoresController@create')->name('fornecedores.new');
+        Route::post('/new', 'FornecedoresController@store')->name('fornecedores.insert');
+        Route::get('/edit/{fornecedores}', 'FornecedoresController@edit')->name('fornecedores.edit');
+    });
+
+    Route::prefix('servicos')->group(function () {
+        Route::get('/', 'ServicosController@index')->name('servicos.index');
+        Route::get('/new', 'ServicosController@create')->name('servicos.new');
+        Route::post('/new', 'ServicosController@store')->name('servicos.insert');
+        Route::get('/edit/{servicos}', 'ServicosController@edit')->name('servicos.edit');
     });
 });
