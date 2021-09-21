@@ -11,6 +11,14 @@
 |
 */
 
-Route::prefix('atendimento')->group(function() {
-    Route::get('/', 'AtendimentoController@index');
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('atendimento')->group(function () {
+    Route::get('/', 'AtendimentoController@index')->name('atendimento.home');
+
+    Route::prefix('agendamentos')->group(function () {
+        Route::get('/', 'AgendamentosController@index')->name('agendamentos.index');
+        Route::get('/new', 'AgendamentosController@create')->name('agendamentos.new');
+        Route::get('/edit/{agendamento}', 'AgendamentosController@edit')->name('agendamentos.alter');
+    });
 });

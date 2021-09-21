@@ -23,10 +23,10 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-        @include('layouts.page_templates.auth')
+        @include('atendimento::layouts.page_templates.auth')
     @endauth
     @guest()
-        @include('layouts.page_templates.guest')
+        @include('atendimento::layouts.page_templates.guest')
     @endguest
 
     <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
@@ -43,6 +43,7 @@
     <script src="{{ asset('material') }}/js/plugins/bootstrap-tagsinput.js"></script>
     <script src="{{ asset('material') }}/js/plugins/jasny-bootstrap.min.js"></script>
     <script src="{{ asset('material') }}/js/plugins/fullcalendar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/locale-all.js"></script>
     <script src="{{ asset('material') }}/js/plugins/jquery-jvectormap.js"></script>
     <script src="{{ asset('material') }}/js/plugins/nouislider.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>

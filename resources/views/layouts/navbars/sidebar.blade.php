@@ -14,8 +14,14 @@
                 </a>
             </li>
             <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('modulo.Atendimento') }}">
+                    <i class="material-icons">medical_services</i>
+                    <p>{{ __('Atendimentos') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('modulo.Cadastro') }}">
-                    <i class="material-icons">dashboard</i>
+                    <i class="material-icons">app_registration</i>
                     <p>{{ __('Cadastros') }}</p>
                 </a>
             </li>
