@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Portes extends Migration
+class Sexo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class Portes extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_portes', function (Blueprint $table) {
-            $table->bigIncrements('cd_porte');
+        Schema::create('tbl_sexo', function (Blueprint $table) {
+            $table->bigIncrements('cd_sexo');
             $table->string('nome');
             $table->string('ativo', 1, ['S', 'N'])->default();
             $table->timestamps();
@@ -28,6 +28,6 @@ class Portes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_portes');
+        //
     }
 }

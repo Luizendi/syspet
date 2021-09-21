@@ -15,10 +15,10 @@ class Servicos extends Migration
     {
         Schema::create('tbl_servicos', function (Blueprint $table) {
             $table->bigIncrements('cd_servico');
+            $table->bigInteger('fk_sexo')->unsigned();
+            $table->bigInteger('fk_porte')->unsigned();
             $table->string('nome');
-            $table->string('sexo');
             $table->float('valor');
-            $table->string('porte');
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
         });

@@ -30,11 +30,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="" class="bmd-label-floating">Sexo</label>
-                                        <input type="text" name="Sexo" class="form-control" id="sexo" required />
+                                        <div class="form-group">
+                                            <select name="Sexo" id="sexo" class="form-control selectpicker"
+                                                data-style="btn-primary" data-live-search="true">
+                                                @forelse ($sexo as $item)
+                                                    <option value="{{ $item->cd_sexo }}">{{ $item->nome }}</option>
+                                                @empty
+                                                    <option disabled>Não existe nenhum sexo cadastrada</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="" class="bmd-label-floating">Valor</label>
@@ -61,7 +67,7 @@
 <script>
     $(document).ready(function() {
 
-        $("#formCadastroServicos").submit(function(e) {
+        $("#formCadastroServico").submit(function(e) {
             e.preventDefault();
 
             var form = $(this);

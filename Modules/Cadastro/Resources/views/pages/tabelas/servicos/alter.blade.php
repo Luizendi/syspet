@@ -61,7 +61,7 @@
 <script>
     $(document).ready(function() {
 
-        $("#formCadastroServicos").submit(function(e) {
+        $("#formCadastroServico").submit(function(e) {
             e.preventDefault();
 
             var form = $(this);
