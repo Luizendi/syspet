@@ -50,4 +50,11 @@ Route::prefix('cadastro')->group(function () {
         Route::post('/new', 'TiposAltasController@store')->name('tiposaltas.insert');
         Route::get('/edit/{tipoalta}', 'TiposAltasController@edit')->name('tiposaltas.edit');
     });
+
+    Route::prefix('fornecedores')->group(function () {
+        Route::get('/', 'FornecedoresController@index')->name('fornecedores.index');
+        Route::get('/new', 'FornecedoresController@create')->name('fornecedores.new');
+        Route::post('/new', 'FornecedoresController@store')->name('fornecedores.insert');
+        Route::get('/edit/{fornecedores}', 'FornecedoresController@edit')->name('fornecedores.edit');
+    });
 });

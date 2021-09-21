@@ -42,8 +42,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item {{ $activePage == 'fornecedores' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('fornecedores.index') }}">
                                 <span class="sidebar-mini"> F </span>
                                 <span class="sidebar-normal"> Fornecedores
                                 </span>
