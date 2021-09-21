@@ -71,7 +71,7 @@ class FornecedoresController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit(Fornecedores $fornecedores)
+    public function edit(Fornecedores $fornecedor)
     {
         return view('cadastro::pages.tabelas.fornecedores.alter', compact('fornecedores'));
     }

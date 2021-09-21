@@ -68,7 +68,7 @@ class ServicosController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit(Servicos $servicos)
+    public function edit(Servicos $servico)
     {
         return view('cadastro::pages.tabelas.servicos.alter', compact('servicos'));
     }

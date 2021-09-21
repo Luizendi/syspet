@@ -71,7 +71,7 @@ class ClientesController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit(Clientes $clientes)
+    public function edit(Clientes $cliente)
     {
         return view('cadastro::pages.cadastros.clientes.alter', compact('clientes'));
     }
