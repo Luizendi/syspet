@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    $().ready(function () {
+$(document).ready(function() {
+    $().ready(function() {
 
         $('.datepicker').datetimepicker({
             format: 'DD/MM/YYYY',
@@ -16,7 +16,39 @@ $(document).ready(function () {
             }
         });
 
-        $(".form-control").keyup(function () {
+        $('.timepicker').datetimepicker({
+            format: 'h:mm A',
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+
+            }
+        });
+
+        $('.timepickerHorarios').datetimepicker({
+            format: 'H:mm',
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+
+            }
+        });
+
+        $(".form-control").keyup(function() {
             $(this).val($(this).val().toUpperCase());
         });
 
@@ -27,10 +59,10 @@ $(document).ready(function () {
             $('body').addClass('sidebar-mini');
             md.misc.sidebar_mini_active = true;
         }
-        var simulateWindowResize = setInterval(function () {
+        var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
         }, 180);
-        setTimeout(function () {
+        setTimeout(function() {
             clearInterval(simulateWindowResize);
         }, 1000);
 
@@ -49,9 +81,9 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
     md.checkFullPageBackgroundImage();
-    setTimeout(function () {
+    setTimeout(function() {
         $('.card').removeClass('card-hidden');
     }, 700);
 });

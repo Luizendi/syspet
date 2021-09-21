@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('cadastro')->group(function () {
     Route::get('/', 'CadastroController@index')->name('cadastro.home');
 
+    Route::prefix('agendas')->group(function () {
+        Route::get('/', 'AgendasController@index')->name('agendas.index');
+        Route::get('/new', 'AgendasController@create')->name('agendas.new');
+        Route::post('/new', 'AgendasController@store')->name('agendas.insert');
+        Route::get('/edit/{agenda}', 'AgendasController@edit')->name('agendas.edit');
+    });
+
     Route::prefix('animais')->group(function () {
         Route::get('/', 'AnimaisController@index')->name('animais.index');
         Route::get('/new', 'AnimaisController@create')->name('animais.new');

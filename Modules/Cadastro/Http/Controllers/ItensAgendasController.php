@@ -1,14 +1,12 @@
 <?php
 
-namespace Modules\Atendimento\Http\Controllers;
+namespace Modules\Cadastro\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
-use Modules\Atendimento\Entities\Agendamentos;
 
-class AgendamentosController extends Controller
+class ItensAgendasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class AgendamentosController extends Controller
      */
     public function index()
     {
-        return view('atendimento::pages.agendamentos.index');
+        return view('cadastro::index');
     }
 
     /**
@@ -25,7 +23,7 @@ class AgendamentosController extends Controller
      */
     public function create()
     {
-        return view('atendimento::create');
+        return view('cadastro::create');
     }
 
     /**
@@ -45,7 +43,7 @@ class AgendamentosController extends Controller
      */
     public function show($id)
     {
-        return view('atendimento::show');
+        return view('cadastro::show');
     }
 
     /**
@@ -55,7 +53,7 @@ class AgendamentosController extends Controller
      */
     public function edit($id)
     {
-        return view('atendimento::edit');
+        return view('cadastro::edit');
     }
 
     /**
@@ -77,18 +75,5 @@ class AgendamentosController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function retornaAgendamentos(){
-        $agendamentos = DB::table('tbl_agendamentos')->get();
-
-        foreach($agendamentos as $item){
-            $Array[] = array(
-                "title" => $item->nome,
-                "start" => $item->data_hora
-            );
-        }
-
-        return json_encode($Array);
     }
 }

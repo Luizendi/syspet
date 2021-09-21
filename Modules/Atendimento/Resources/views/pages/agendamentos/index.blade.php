@@ -65,7 +65,7 @@
                 eventLimit: true, // allow "more" link when too many events
 
                 // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-                events: '{{ route('') }}'
+                events: '{{ route('agendamentos.api') }}'
             });
         });
     </script>
