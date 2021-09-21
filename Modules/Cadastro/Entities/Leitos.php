@@ -15,6 +15,7 @@ class Leitos extends Model
     protected $fillable = [
         "fk_porte",
         "nome",
+        "situacao",
         "isolamento",
         "ativo"
     ];

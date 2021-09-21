@@ -22,6 +22,7 @@
                                 <th class="text-center">Código</th>
                                 <th class="text-center">Nome</th>
                                 <th class="text-center">Porte</th>
+                                <th class="text-center">Isolamento</th>
                                 <th class="text-center">Situação</th>
                                 <th class="disabled-sorting text-right">Ações</th>
                             </tr>
@@ -32,6 +33,9 @@
                                     <td class="text-center">{{ $item->cd_leito }}</td>
                                     <td class="text-center">{{ $item->nome }}</td>
                                     <td class="text-center">{{ $item->porte }}</td>
+                                    <td class="text-center"><span
+                                            class="badge badge-{{ $item->isolamento == 'N' ? 'primary' : 'danger' }}">{{ $item->isolamento == 'S' ? 'Sim' : 'Não' }}</span>
+                                    </td>
                                     <td class="text-center"><span
                                             class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
                                     </td>

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Modules\Cadastro\Entities\Leitos;
 
 class LeitosController extends Controller
 {
@@ -16,9 +17,9 @@ class LeitosController extends Controller
     public function index()
     {
         $leitos = DB::table('tbl_leitos AS l')
-        ->select('l.*', 'p.nome AS porte')
-        ->leftJoin('tbl_portes AS p', 'p.cd_porte', '=', 'l.fk_porte')
-        ->get();
+            ->select('l.*', 'p.nome AS porte')
+            ->leftJoin('tbl_portes AS p', 'p.cd_porte', '=', 'l.fk_porte')
+            ->get();
         return view('cadastro::pages.tabelas.leitos.index', ['leitos' => $leitos]);
     }
 
@@ -28,7 +29,8 @@ class LeitosController extends Controller
      */
     public function create()
     {
-        return view('cadastro::pages.tabelas.leitos.new');
+        $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.tabelas.leitos.new', ['portes' => $portes]);
     }
 
     /**
@@ -38,7 +40,20 @@ class LeitosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $leitos = Leitos::create([
+            "fk_porte" => $request->input('Porte'),
+            "nome" => $request->input('Nome'),
+            "isolamento" => $request->input('Isolamento'),
+            "situacao" => "L",
+            "ativo" => "S",
+            "created_at" => now()
+        ]);
+
+        if ($leitos) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**
