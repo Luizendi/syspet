@@ -16,7 +16,10 @@ class ServicosController extends Controller
      */
     public function index()
     {
-        $servicos = Servicos::all();
+        $servicos = DB::table('tbl_sexo AS s')
+            ->select('s.*', 's.nome AS sexo')
+            ->leftJoin('tbl_servicos AS se', 'se.cd_servico', '=', 's.fk_servico')
+            ->get();
         return view('cadastro::pages.tabelas.servicos.index', ['servicos' => $servicos]);
     }
 
@@ -26,7 +29,8 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        return view('cadastro::pages.tabelas.servicos.new');
+        $sexo = DB::table('tbl_sexo')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.tabelas.servicos.new', ['sexo' => $sexo]);
     }
 
     /**
@@ -38,17 +42,17 @@ class ServicosController extends Controller
     {
         $servicos = Servicos::create([
             "nome" => $request->input("Nome"),
-            "sexo"=>$request->input("Sexo"),
-            "porte"=>$request->input("Porte"),
-            "valor"=>$request->input("Valor"),
+            "sexo" => $request->input("Sexo"),
+            "porte" => $request->input("Porte"),
+            "valor" => $request->input("Valor"),
             "ativo" => "S",
             "created_at" => now(),
             "updated_at" => now()
         ]);
 
-        if($servicos){
+        if ($servicos) {
             return json_encode("SUCCESS");
-        }else{
+        } else {
             return json_encode("ERROR");
         }
     }
@@ -70,7 +74,8 @@ class ServicosController extends Controller
      */
     public function edit(Servicos $servicos)
     {
-        return view('cadastro::pages.tabelas.servicos.alter', compact('servicos'));
+        $sexo = DB::table('tbl_sexo')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.tabelas.servicos.alter', compact('servicos'), ['sexo' => $sexo]);
     }
 
     /**
@@ -94,21 +99,21 @@ class ServicosController extends Controller
         //
     }
 
-    public function retornaServicos($servicos){
+    public function retornaServicos($servicos)
+    {
 
         $servicos = DB::table('tbl_servicos')->where('cd_servico', '=', $servicos);
 
-        if($servicos->count()>0){
+        if ($servicos->count() > 0) {
 
             $servicos = $servicos->first();
 
-            if($servicos->ativo == "S"){
+            if ($servicos->ativo == "S") {
                 return json_encode($servicos);
-            }else{
+            } else {
                 return json_encode("INACTIVE");
             }
-
-        }else{
+        } else {
             return json_encode("ERROR");
         }
     }

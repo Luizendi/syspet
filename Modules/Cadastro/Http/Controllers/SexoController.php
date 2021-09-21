@@ -4,6 +4,7 @@ namespace Modules\Cadastro\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller;
 
 class SexoController extends Controller
@@ -14,6 +15,10 @@ class SexoController extends Controller
      */
     public function index()
     {
+        $sexo = DB::table('tbl_sexo AS s')
+            ->select('s.*', 's.nome AS sexo')
+            ->leftJoin('tbl_servicos AS se', 'se.cd_servico', '=', 's.fk_servico')
+            ->get();
         return view('cadastro::index');
     }
 
@@ -75,5 +80,27 @@ class SexoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function retornaSexo($sexo)
+    {
+
+        $sexo = DB::table('tbl_sexo AS s')
+            ->select('s.*', 's.nome AS sexo')
+            ->leftJoin('tbl_servicos AS se', 'se.cd_servico', '=', 's.fk_servico')
+            ->where('s.cd_sexo', '=', $sexo);
+
+        if ($sexo->count() > 0) {
+
+            $sexo = $sexo->first();
+
+            if ($sexo->ativo == "S") {
+                return json_encode($sexo);
+            } else {
+                return json_encode("INACTIVE");
+            }
+        } else {
+            return json_encode("ERROR");
+        }
     }
 }
