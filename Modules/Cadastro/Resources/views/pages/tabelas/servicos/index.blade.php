@@ -32,8 +32,8 @@
                                 <tr>
                                     <td class="text-center">{{ $item->cd_servico }}</td>
                                     <td class="text-center">{{ $item->nome }}</td>
-                                    <td class="text-center">{{ $item->sexo}}</td>
-                                    <td class="text-center">{{ $item->porte}}</td>
+                                    <td class="text-center">{{ $item->sexo == 'F' ? 'FÊMEA' : 'MACHO' }}</td>
+                                    <td class="text-center">{{ $item->porte }}</td>
                                     <td class="text-center"><span
                                             class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
                                     </td>

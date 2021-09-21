@@ -16,10 +16,7 @@ class ServicosController extends Controller
      */
     public function index()
     {
-        $servicos = DB::table('tbl_sexo AS s')
-            ->select('s.*', 's.nome AS sexo')
-            ->leftJoin('tbl_servicos AS se', 'se.cd_servico', '=', 's.fk_servico')
-            ->get();
+        $servicos = DB::table('tbl_servicos AS s')->get();
         return view('cadastro::pages.tabelas.servicos.index', ['servicos' => $servicos]);
     }
 
@@ -29,8 +26,7 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        $sexo = DB::table('tbl_sexo')->where('ativo', '=', 'S')->get();
-        return view('cadastro::pages.tabelas.servicos.new', ['sexo' => $sexo]);
+        return view('cadastro::pages.tabelas.servicos.new');
     }
 
     /**
@@ -74,8 +70,7 @@ class ServicosController extends Controller
      */
     public function edit(Servicos $servicos)
     {
-        $sexo = DB::table('tbl_sexo')->where('ativo', '=', 'S')->get();
-        return view('cadastro::pages.tabelas.servicos.alter', compact('servicos'), ['sexo' => $sexo]);
+        return view('cadastro::pages.tabelas.servicos.alter', compact('servicos'));
     }
 
     /**
