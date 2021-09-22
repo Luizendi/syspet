@@ -23,7 +23,7 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home')->midd
 
 Route::get('/atendimentos', 'Modules\Atendimento\Http\Controllers\AtendimentoController@index')->name("modulo.Atendimento");
 Route::get('/cadastros', 'Modules\Cadastro\Http\Controllers\CadastroController@index')->name("modulo.Cadastro");
-Route::get('/estoque', 'Modules\Estoque\Http\Controllers\EstoqueController@index')->name("modulo.Estoque");
+Route::get('/estoques', 'Modules\Estoque\Http\Controllers\EstoqueController@index')->name("modulo.Estoque");
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
