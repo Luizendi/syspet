@@ -1,8 +1,8 @@
 <div class="wrapper ">
-    @include('layouts.navbars.sidebar')
+    @include('estoque::layouts.navbars.sidebar')
     <div class="main-panel">
-        @include('layouts.navbars.navs.auth')
+        @include('estoque::layouts.navbars.navs.auth')
         @yield('content')
-        @include('layouts.footers.auth')
+        @include('estoque::layouts.footers.auth')
     </div>
 </div>

@@ -23,10 +23,10 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-        @include('layouts.page_templates.auth')
+        @include('estoque::layouts.page_templates.auth')
     @endauth
     @guest()
-        @include('layouts.page_templates.guest')
+        @include('estoque::layouts.page_templates.guest')
     @endguest
 
     <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
