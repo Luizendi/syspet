@@ -79,13 +79,26 @@ class AgendamentosController extends Controller
         //
     }
 
-    public function retornaAgendamentos(){
-        $agendamentos = DB::table('tbl_agendamentos')->get();
+    public function retornaAgendamentos()
+    {
+        $agendamentos = DB::table('tbl_horariosagendas AS hg')
+            ->select('hg.*', 'ig.*', 'ag.*')
+            ->leftJoin('tbl_itensagendas AS ig', 'ig.cd_itemagenda', '=', 'hg.fk_itemagenda')
+            ->leftJoin('tbl_agendas AS ag', 'ag.cd_agenda', '=', 'ig.fk_agenda')
+            ->where('ag.ativo', '=', 'S')
+            ->where('ig.gerado', '=', 'S')
+            ->get();
 
-        foreach($agendamentos as $item){
+        foreach ($agendamentos as $item) {
+
+            $TempoConsulta = date('i', strtotime($item->tempo_consulta));
+
+            $HoraFinal = date('H:i', strtotime("+" . $TempoConsulta . " minutes", strtotime($item->hora)));
+
             $Array[] = array(
-                "title" => $item->nome,
-                "start" => $item->data_hora
+                "title" => "Horário " . $item->hora,
+                "start" => $item->hora,
+                "end" => $HoraFinal
             );
         }
 

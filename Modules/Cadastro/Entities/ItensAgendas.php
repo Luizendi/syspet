@@ -24,6 +24,7 @@ class ItensAgendas extends Model
         "hora_inicio",
         "hora_termino",
         "tempo_consulta",
+        "gerado",
         "ativo"
     ];
 }

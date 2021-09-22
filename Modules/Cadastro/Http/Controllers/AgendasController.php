@@ -60,6 +60,7 @@ class AgendasController extends Controller
                 "hora_inicio" => date('H:i', strtotime($request->input('HorarioInicio'))),
                 "hora_termino" => date('H:i', strtotime($request->input('HorarioFinal'))),
                 "tempo_consulta" => date('H:i', strtotime($request->input('TempoConsulta'))),
+                "gerado" => "N",
                 "ativo" => $request->input('Ativo'),
                 "created_at" => now()
             ]);

@@ -64,6 +64,7 @@
                     url: "{{ route('horarios.insert') }}",
                     type: "POST",
                     data: {
+                        _token: "{{ csrf_token() }}",
                         Agenda: id
                     },
                     dataType: "JSON",
@@ -71,7 +72,19 @@
 
                     },
                     success: function(data) {
-
+                        if (data === "INACTIVE") {
+                            swal.fire("Agenda inativo",
+                                "A agenda está inativa, verifique o cadastro da mesma e tente novamente",
+                                "error");
+                        } else if (data === "DUPLICATE") {
+                            swal.fire("Horários gerados",
+                                "Os horários para esta agenda já foram criados",
+                                "error");
+                        } else {
+                            swal.fire("Horários criados",
+                                "Os horários foram gerados para a agenda selecionada.",
+                                "success");
+                        }
                     },
                     error: function() {
 

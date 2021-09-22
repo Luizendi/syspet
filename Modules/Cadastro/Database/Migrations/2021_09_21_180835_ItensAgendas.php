@@ -26,6 +26,7 @@ class ItensAgendas extends Migration
             $table->time('hora_inicio');
             $table->time('hora_termino');
             $table->time('tempo_consulta');
+            $table->string('gerado', 1, ['S', 'N'])->default('N');
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
 
