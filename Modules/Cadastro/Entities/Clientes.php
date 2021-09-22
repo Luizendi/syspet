@@ -14,12 +14,18 @@ class Clientes extends Model
 
     protected $fillable = [
         "nome",
-        "endereco",
+        "celular",
+        "email",
+        "data_nascimento",
         "cnpjcpf",
         "ierg",
         "cep",
+        "endereco",
+        "bairro",
+        "numero",
         "cidade",
         "estado",
+        "foto",
         "ativo"
     ];
 }

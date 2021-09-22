@@ -38,15 +38,18 @@ class ClientesController extends Controller
     {
         $clientes = Clientes::create([
             "nome" => $request->input("Nome"),
-            "endereco"=>$request->input("Endereco"),
-            "cidade"=>$request->input("Cidade"),
-            "estado"=>$request->input("Estado"),
-            "cep"=>$request->input("CEP"),
+            "celular" => $request->input("Celular"),
+            "email" => $request->input("Email"),
             "cnpjcpf"=>$request->input("CnpjCpf"),
             "ierg"=>$request->input("IeRg"),
+            "cep"=>$request->input("CEP"),
+            "endereco"=>$request->input("Endereco"),
+            "bairro"=>$request->input("Bairro"),
+            "numero"=>$request->input("Numero"),
+            "cidade"=>$request->input("Cidade"),
+            "estado"=>$request->input("Estado"),
             "ativo" => "S",
-            "created_at" => now(),
-            "updated_at" => now()
+            "created_at" => now()
         ]);
 
         if($clientes){

@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $().ready(function() {
+$(document).ready(function () {
+    $().ready(function () {
 
         $('.datepicker').datetimepicker({
             format: 'DD/MM/YYYY',
@@ -48,8 +48,12 @@ $(document).ready(function() {
             }
         });
 
-        $(".form-control").keyup(function() {
+        $(".form-control").keyup(function () {
             $(this).val($(this).val().toUpperCase());
+        });
+
+        $(".mi").keyup(function () {
+            $(this).val($(this).val().toLowerCase());
         });
 
         if (md.misc.sidebar_mini_active == true) {
@@ -59,10 +63,10 @@ $(document).ready(function() {
             $('body').addClass('sidebar-mini');
             md.misc.sidebar_mini_active = true;
         }
-        var simulateWindowResize = setInterval(function() {
+        var simulateWindowResize = setInterval(function () {
             window.dispatchEvent(new Event('resize'));
         }, 180);
-        setTimeout(function() {
+        setTimeout(function () {
             clearInterval(simulateWindowResize);
         }, 1000);
 
@@ -78,12 +82,51 @@ $(document).ready(function() {
                 "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
             },
         });
+
+        function limpa_formulário_cep() {
+            $("#endereco").val("");
+            $("#bairro").val("");
+            $("#cidade").val("");
+            $("#estado").val("");
+        }
+
+        $("#cep").blur(function () {
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep != "") {
+                var validacep = /^[0-9]{8}$/;
+                if (validacep.test(cep)) {
+                    $("#endereco").val("BUSCANDO...");
+                    $("#bairro").val("BUSCANDO...");
+                    $("#cidade").val("BUSCANDO...");
+                    $("#estado").val("BUSCANDO...");
+                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                        if (!("erro" in dados)) {
+                            $("#endereco").val(dados.logradouro);
+                            $("#bairro").val(dados.bairro);
+                            $("#cidade").val(dados.localidade);
+                            $("#estado").val(dados.uf);
+                        }
+                        else {
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                }
+                else {
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            }
+            else {
+                limpa_formulário_cep();
+            }
+        });
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     md.checkFullPageBackgroundImage();
-    setTimeout(function() {
+    setTimeout(function () {
         $('.card').removeClass('card-hidden');
     }, 700);
 });
