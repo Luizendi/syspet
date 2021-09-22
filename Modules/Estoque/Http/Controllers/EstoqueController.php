@@ -14,7 +14,7 @@ class EstoqueController extends Controller
      */
     public function index()
     {
-        return view('estoque::index');
+        return view('estoque::dashboard');
     }
 
     /**
