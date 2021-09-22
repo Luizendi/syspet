@@ -28,7 +28,7 @@
 
             $calendar.fullCalendar({
 
-                defaultView: 'agendaDay',
+                defaultView: 'agendaWeek',
                 locale: 'pt-br',
 
                 viewRender: function(view, element) {

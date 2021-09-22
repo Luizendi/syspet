@@ -34,7 +34,13 @@
                                             class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('animais.edit', $item->cd_agenda) }}"
+                                        @if ($item->ativo == 'S')
+                                            <a href="#" onclick="gerarHorarios({{ $item->cd_agenda }})"
+                                                class="btn btn-link btn-primary btn-just-icon" data-toggle="tooltip"
+                                                data-placement="bottom" title="Gerar Horários"><i
+                                                    class="material-icons">today</i></a>
+                                        @endif
+                                        <a href="{{ route('agendas.edit', $item->cd_agenda) }}"
                                             class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
                                             data-placement="bottom" title="Editar"><i class="material-icons">edit</i></a>
                                         <a href="#" class="btn btn-link btn-danger btn-just-icon" data-toggle="tooltip"
@@ -49,3 +55,29 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            gerarHorarios = function(id) {
+                $.ajax({
+                    url: "{{ route('horarios.insert') }}",
+                    type: "POST",
+                    data: {
+                        Agenda: id
+                    },
+                    dataType: "JSON",
+                    beforeSend: function() {
+
+                    },
+                    success: function(data) {
+
+                    },
+                    error: function() {
+
+                    }
+                })
+            }
+        });
+    </script>
+@endpush

@@ -21,6 +21,10 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/new', 'AgendasController@create')->name('agendas.new');
         Route::post('/new', 'AgendasController@store')->name('agendas.insert');
         Route::get('/edit/{agenda}', 'AgendasController@edit')->name('agendas.edit');
+
+        Route::prefix('horarios')->group(function () {
+            Route::post('/gerar', 'HorariosAgendasController@store')->name('horarios.insert');
+        });
     });
 
     Route::prefix('animais')->group(function () {
