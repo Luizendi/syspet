@@ -15,14 +15,14 @@ class Agendamentos extends Migration
     {
         Schema::create('tbl_agendamentos', function (Blueprint $table) {
             $table->bigIncrements('cd_agendamento');
-            $table->bigInteger('fk_itemagenda')->unsigned();
+            $table->bigInteger('fk_horario')->unsigned();
             $table->bigInteger('fk_animal')->unsigned();
             $table->string('nome');
             $table->timestamp('data_hora');
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
 
-            $table->foreign('fk_itemagenda')->references('cd_itemagenda')->on('tbl_itensagendas');
+            $table->foreign('fk_horario')->references('cd_horario')->on('tbl_horariosagendas');
             $table->foreign('fk_animal')->references('cd_animal')->on('tbl_animais');
         });
     }
