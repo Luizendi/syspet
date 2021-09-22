@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('estoque')->group(function() {
-    Route::get('/', 'EstoqueController@index');
+    Route::get('/', 'EstoqueController@index')->name('estoque.home');;
 });

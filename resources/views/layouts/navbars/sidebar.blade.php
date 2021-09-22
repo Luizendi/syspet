@@ -25,6 +25,12 @@
                     <p>{{ __('Cadastros') }}</p>
                 </a>
             </li>
+            <li class="nav-item{{ $activePage == '' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('modulo.Estoque') }}">
+                    <i class="material-icons">corporate_fare</i>
+                    <p>{{ __('Estoque') }}</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
