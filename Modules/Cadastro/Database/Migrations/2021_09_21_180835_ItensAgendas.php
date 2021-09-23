@@ -23,6 +23,8 @@ class ItensAgendas extends Migration
             $table->string('qui', 1, ['S', 'N'])->nullable();
             $table->string('sex', 1, ['S', 'N'])->nullable();
             $table->string('sab', 1, ['S', 'N'])->nullable();
+            $table->date('data_inicio');
+            $table->date('data_termino');
             $table->time('hora_inicio');
             $table->time('hora_termino');
             $table->time('tempo_consulta');

@@ -51,27 +51,37 @@ class HorariosAgendasController extends Controller
 
             if ($ItemAgenda->gerado == "N") {
 
-                $HorarioInicio = new DateTime($ItemAgenda->hora_inicio);
-                $HorarioFinal = new DateTime($ItemAgenda->hora_termino);
-                $HorarioFinal = $HorarioFinal->modify('+5 minute');
+                $DataInicio = new DateTime($ItemAgenda->data_inicio);
+                $DataFinal = new DateTime($ItemAgenda->data_termino);
 
-                $TempoConsulta = $ItemAgenda->tempo_consulta;
+                $periodoDias = new DatePeriod($DataInicio, new DateInterval("P1D"), $DataFinal);
 
-                $HoraForm = 'PT' . date('i', strtotime($TempoConsulta)) . 'M';
+                foreach ($periodoDias as $data) {
 
-                $periodoCompetencia = new DatePeriod($HorarioInicio, new DateInterval($HoraForm), $HorarioFinal);
+                    $data = $data->format('Y-m-d');
 
-                foreach ($periodoCompetencia as $data) {
+                    $HorarioInicio = new DateTime($ItemAgenda->hora_inicio);
+                    $HorarioFinal = new DateTime($ItemAgenda->hora_termino);
 
-                    $data = $data->format('H:i');
+                    $TempoConsulta = $ItemAgenda->tempo_consulta;
 
-                    HorariosAgendas::create([
-                        "fk_itemagenda" => $ItemAgenda->cd_itemagenda,
-                        "situacao" => "V",
-                        "hora" => $data,
-                        "ativo" => "S",
-                        "created_at" => now()
-                    ]);
+                    $HoraForm = 'PT' . date('i', strtotime($TempoConsulta)) . 'M';
+
+                    $periodoHoras = new DatePeriod($HorarioInicio, new DateInterval($HoraForm), $HorarioFinal);
+
+                    foreach ($periodoHoras as $hora) {
+
+                        $hora = $hora->format('H:i');
+
+                        HorariosAgendas::create([
+                            "fk_itemagenda" => $ItemAgenda->cd_itemagenda,
+                            "situacao" => "V",
+                            "data" => $data,
+                            "hora" => $hora,
+                            "ativo" => "S",
+                            "created_at" => now()
+                        ]);
+                    }
                 }
 
                 $update = DB::update('update tbl_itensagendas set gerado = "S" where cd_itemagenda = ?', [$ItemAgenda->cd_itemagenda]);

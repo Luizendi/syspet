@@ -21,6 +21,8 @@ class ItensAgendas extends Model
         "qui",
         "sex",
         "sab",
+        "data_inicio",
+        "data_termino",
         "hora_inicio",
         "hora_termino",
         "tempo_consulta",

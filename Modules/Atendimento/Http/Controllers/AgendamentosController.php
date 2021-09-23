@@ -6,7 +6,6 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Modules\Atendimento\Entities\Agendamentos;
 
 class AgendamentosController extends Controller
 {
@@ -23,9 +22,10 @@ class AgendamentosController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create($horario)
     {
-        return view('atendimento::create');
+        $Horario = DB::table('tbl_horariosagendas')->where('cd_horario', '=', $horario)->first();
+        return view('atendimento::pages.agendamentos.new', ['horario' => $Horario]);
     }
 
     /**
@@ -98,11 +98,9 @@ class AgendamentosController extends Controller
             $Array[] = array(
                 "id" => $item->cd_horario,
                 "title" => "Horário " . $item->hora,
-                "start" => $item->hora,
-                "end" => $HoraFinal,
-                "className" => "event-orange",
-                "editable" => true,
-                "allDay" => false
+                "start" => date('Y-m-d H:i', strtotime($item->data . $item->hora)),
+                "end" => date('Y-m-d H:i', strtotime($item->data . $item->hora)),
+                "className" => $item->situacao == 'A' ? "event-azure" : "event-green",
             );
         }
 

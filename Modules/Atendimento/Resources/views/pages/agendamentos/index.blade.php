@@ -42,25 +42,24 @@
                     right: 'prev,next,today'
                 },
                 defaultDate: today,
-
                 views: {
-                    month: { // name of view
+                    month: {
                         titleFormat: 'MMMM YYYY'
-                        // other view-specific options here
                     },
                     week: {
-                        titleFormat: " MMMM D YYYY"
+                        titleFormat: "MMMM D YYYY"
                     },
                     day: {
                         titleFormat: 'D MMMM, YYYY'
                     }
                 },
+                eventClick: function(event, element) {
 
-                select: function(start, end) {
+                    window.location.href = "/atendimento/agendamentos/new/" + event.id;
+
+                    $('#calendar').fullCalendar('updateEvent', event);
 
                 },
-
-                editable: true,
 
                 // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
                 events: '{{ route('agendamentos.api') }}'

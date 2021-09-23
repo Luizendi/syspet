@@ -15,6 +15,7 @@ class HorariosAgendas extends Model
     protected $fillable = [
         "fk_itemagenda",
         "situacao",
+        "data",
         "hora",
         "ativo"
     ];

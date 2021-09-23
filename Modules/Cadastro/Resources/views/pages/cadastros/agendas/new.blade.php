@@ -136,6 +136,22 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Data de Início</label>
+                                            <input type="text" class="form-control datepicker" name="DataInicio"
+                                                id="dataInicio">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Data Final</label>
+                                            <input type="text" class="form-control datepicker" name="DataFinal"
+                                                id="dataFinal">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
                                             <label for="" class="bmd-label-floating">Horário de Início</label>
                                             <input type="text" class="form-control timepicker" name="HorarioInicio"
                                                 id="horarioInicio">

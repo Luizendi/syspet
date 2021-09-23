@@ -57,6 +57,8 @@ class AgendasController extends Controller
                 "qui" => $request->input('Qui') == "on" ? "S" : "N",
                 "sex" => $request->input('Sex') == "on" ? "S" : "N",
                 "sab" => $request->input('Sab') == "on" ? "S" : "N",
+                "data_inicio" => date('Y-m-d', strtotime($request->input('DataInicio'))),
+                "data_termino" => date('Y-m-d', strtotime($request->input('DataFinal'))),
                 "hora_inicio" => date('H:i', strtotime($request->input('HorarioInicio'))),
                 "hora_termino" => date('H:i', strtotime($request->input('HorarioFinal'))),
                 "tempo_consulta" => date('H:i', strtotime($request->input('TempoConsulta'))),
