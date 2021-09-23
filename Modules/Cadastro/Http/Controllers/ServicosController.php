@@ -38,9 +38,9 @@ class ServicosController extends Controller
     public function store(Request $request)
     {
         $servicos = Servicos::create([
+            "fk_porte" => $request->input("Porte"),
             "nome" => $request->input("Nome"),
             "sexo" => $request->input("Sexo"),
-            "porte" => $request->input("Porte"),
             "valor" => $request->input("Valor"),
             "ativo" => "S",
             "created_at" => now()

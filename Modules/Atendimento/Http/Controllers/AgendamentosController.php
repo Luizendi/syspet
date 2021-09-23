@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class AgendamentosController extends Controller
 {
+
+    public function __construct()
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -25,7 +31,16 @@ class AgendamentosController extends Controller
     public function create($horario)
     {
         $Horario = DB::table('tbl_horariosagendas')->where('cd_horario', '=', $horario)->first();
-        return view('atendimento::pages.agendamentos.new', ['horario' => $Horario]);
+        $Servicos = DB::table('tbl_servicos')->where('ativo', '=', 'S')->get();
+        $Animais = DB::table('tbl_animais AS a')
+            ->select('a.*', 'r.nome AS raca', 'e.nome AS especie', 'c.nome AS tutor', 'c.cnpjcpf AS cpftutor')
+            ->leftJoin('tbl_clientes AS c', 'c.cd_cliente', '=', 'a.fk_cliente')
+            ->leftJoin('tbl_racas AS r', 'r.cd_raca', '=', 'a.fk_raca')
+            ->leftJoin('tbl_especies AS e', 'e.cd_especie', '=', 'r.fk_especie')
+            ->where('a.ativo', '=', 'S')
+            ->get();
+
+        return view('atendimento::pages.agendamentos.new', ['horario' => $Horario, 'servicos' => $Servicos, 'animais' => $Animais]);
     }
 
     /**
@@ -35,7 +50,7 @@ class AgendamentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

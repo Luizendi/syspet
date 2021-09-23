@@ -136,15 +136,15 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Data de Início</label>
-                                            <input type="text" class="form-control datepicker" name="DataInicio"
+                                            <label for="" class="bmd-label-static">Data de Início</label>
+                                            <input type="date" class="form-control" name="DataInicio"
                                                 id="dataInicio">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Data Final</label>
-                                            <input type="text" class="form-control datepicker" name="DataFinal"
+                                            <label for="" class="bmd-label-static">Data Final</label>
+                                            <input type="date" class="form-control" name="DataFinal"
                                                 id="dataFinal">
                                         </div>
                                     </div>
@@ -152,14 +152,14 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Horário de Início</label>
+                                            <label for="" class="bmd-label-static">Horário de Início</label>
                                             <input type="text" class="form-control timepicker" name="HorarioInicio"
                                                 id="horarioInicio">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Horário Final</label>
+                                            <label for="" class="bmd-label-static">Horário Final</label>
                                             <input type="text" class="form-control timepicker" name="HorarioFinal"
                                                 id="horarioFinal">
                                         </div>
@@ -177,7 +177,7 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Tempo de Consulta</label>
+                                            <label for="" class="bmd-label-static">Tempo de Consulta</label>
                                             <input type="text" class="form-control timepickerHorarios" name="TempoConsulta"
                                                 id="tempoConsulta">
                                         </div>

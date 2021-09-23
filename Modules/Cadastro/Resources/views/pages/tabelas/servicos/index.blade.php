@@ -1,4 +1,4 @@
-@extends('cadastro::layouts.app', ['activePage' => 'servicos', 'titlePage' => 'servicos'])
+@extends('cadastro::layouts.app', ['activePage' => 'servicos', 'titlePage' => 'Serviços'])
 
 @section('content')
     <div class="content">
@@ -21,8 +21,7 @@
                             <tr>
                                 <th class="text-center">Código</th>
                                 <th class="text-center">Serviço</th>
-                                <th class="text-center">Sexo</th>
-                                <th class="text-center">Porte</th>
+                                <th class="text-center">Valor</th>
                                 <th class="text-center">Situação</th>
                                 <th class="disabled-sorting text-right">Ações</th>
                             </tr>
@@ -32,8 +31,7 @@
                                 <tr>
                                     <td class="text-center">{{ $item->cd_servico }}</td>
                                     <td class="text-center">{{ $item->nome }}</td>
-                                    <td class="text-center">{{ $item->sexo == 'F' ? 'FÊMEA' : 'MACHO' }}</td>
-                                    <td class="text-center">{{ $item->porte }}</td>
+                                    <td class="text-center">R$ {{ $item->valor }}</td>
                                     <td class="text-center"><span
                                             class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
                                     </td>
