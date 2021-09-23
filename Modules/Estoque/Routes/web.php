@@ -12,6 +12,16 @@
 */
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('estoque')->group(function() {
-    Route::get('/', 'EstoqueController@index')->name('estoque.home');;
+Route::prefix('estoque')->group(function () {
+    Route::get('/', 'EstoqueController@index')->name('Estoque.home');
+
+    Route::prefix('compras')->group(function () {
+        Route::get('/', 'ComprasController@index')->name('compras.index');
+
+    });
+
+    Route::prefix('movimentacao')->group(function () {
+        Route::get('/', 'MovimentacaoController@index')->name('movimentacao.index');
+
+    });
 });
