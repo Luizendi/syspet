@@ -96,9 +96,13 @@ class AgendamentosController extends Controller
             $HoraFinal = date('H:i', strtotime("+" . $TempoConsulta . " minutes", strtotime($item->hora)));
 
             $Array[] = array(
+                "id" => $item->cd_horario,
                 "title" => "Horário " . $item->hora,
                 "start" => $item->hora,
-                "end" => $HoraFinal
+                "end" => $HoraFinal,
+                "className" => "event-orange",
+                "editable" => true,
+                "allDay" => false
             );
         }
 

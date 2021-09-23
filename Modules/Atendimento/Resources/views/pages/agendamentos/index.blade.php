@@ -32,7 +32,6 @@
                 locale: 'pt-br',
 
                 viewRender: function(view, element) {
-                    // We make sure that we activate the perfect scrollbar when the view isn't on Month
                     if (view.name != 'month') {
                         $(element).find('.fc-scroller').perfectScrollbar();
                     }
@@ -43,8 +42,7 @@
                     right: 'prev,next,today'
                 },
                 defaultDate: today,
-                selectable: true,
-                selectHelper: true,
+
                 views: {
                     month: { // name of view
                         titleFormat: 'MMMM YYYY'
@@ -61,8 +59,8 @@
                 select: function(start, end) {
 
                 },
+
                 editable: true,
-                eventLimit: true, // allow "more" link when too many events
 
                 // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
                 events: '{{ route('agendamentos.api') }}'
