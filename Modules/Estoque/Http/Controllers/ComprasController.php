@@ -32,7 +32,7 @@ class ComprasController extends Controller
         ->leftJoin('tbl_compras AS e', 'e.fk_fornecedor', '=', 'r.cd_fornecedor')
         ->where('r.ativo', '=', 'S')->get();
 
-    return view('estoque::pages.estoque.compras.new', ['fornecedores' => $$fornecedores]);
+    return view('estoque::pages.estoque.compras.new', ['fornecedores' => $$fornecedor]);
 
     }
 
