@@ -19,6 +19,7 @@ Route::prefix('atendimento')->group(function () {
     Route::prefix('agendamentos')->group(function () {
         Route::get('/', 'AgendamentosController@index')->name('agendamentos.index');
         Route::get('/new/{horario}', 'AgendamentosController@create')->name('agendamentos.new');
+        Route::post('/new', 'AgendamentosController@store')->name('agendamentos.insert');
         Route::get('/edit/{agendamento}', 'AgendamentosController@edit')->name('agendamentos.alter');
     });
 });

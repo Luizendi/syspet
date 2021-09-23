@@ -13,10 +13,10 @@ class Agendamentos extends Model
     protected $primaryKey = "cd_agendamento";
 
     protected $fillable = [
-        "fk_agenda",
+        "fk_horario",
         "fk_animal",
+        "fk_servico",
         "nome",
-        "data_hora",
         "ativo"
     ];
 }

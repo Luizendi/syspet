@@ -6,13 +6,13 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Modules\Atendimento\Entities\Agendamentos;
 
 class AgendamentosController extends Controller
 {
 
     public function __construct()
     {
-        
     }
 
     /**
@@ -50,7 +50,36 @@ class AgendamentosController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $CDHorario = $request->input('Horario');
+
+        $Horarios = DB::table('tbl_horariosagendas')
+            ->where('cd_horario', '=', $CDHorario)
+            ->first();
+
+        if ($Horarios->situacao == "V") {
+            $Agendamento = Agendamentos::create([
+                "fk_horario" => $CDHorario,
+                "fk_animal" => $request->input('CodigoAnimal'),
+                "fk_servico" => $request->input('Servico'),
+                "nome" => $request->input('Descricao'),
+                "ativo" => "S",
+                "created_at" => now()
+            ]);
+
+            if ($Agendamento) {
+                $Update = DB::update('update tbl_horariosagendas set situacao = "O" where cd_horario = ?', [$CDHorario]);
+
+                if ($Update) {
+                    return json_encode("SUCCESS");
+                } else {
+                    return json_encode("ERROR");
+                }
+            } else {
+                return json_encode("ERROR");
+            }
+        } else {
+            return json_encode("BUSY");
+        }
     }
 
     /**
@@ -115,7 +144,7 @@ class AgendamentosController extends Controller
                 "title" => "Horário " . $item->hora,
                 "start" => date('Y-m-d H:i', strtotime($item->data . $item->hora)),
                 "end" => date('Y-m-d H:i', strtotime($item->data . $item->hora)),
-                "className" => $item->situacao == 'A' ? "event-azure" : "event-green",
+                "className" => $item->situacao == 'O' ? "event-red" : "event-green",
             );
         }
 

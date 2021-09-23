@@ -17,13 +17,14 @@ class Agendamentos extends Migration
             $table->bigIncrements('cd_agendamento');
             $table->bigInteger('fk_horario')->unsigned();
             $table->bigInteger('fk_animal')->unsigned();
-            $table->string('nome');
-            $table->timestamp('data_hora');
+            $table->bigInteger('fk_servico')->unsigned()->nullable();
+            $table->string('nome', 2500)->nullable();
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
 
             $table->foreign('fk_horario')->references('cd_horario')->on('tbl_horariosagendas');
             $table->foreign('fk_animal')->references('cd_animal')->on('tbl_animais');
+            $table->foreign('fk_servico')->references('cd_servico')->on('tbl_servicos');
         });
     }
 

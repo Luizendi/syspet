@@ -90,6 +90,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Descrição</label>
+                                            <textarea name="Descricao" class="form-control" id="descricao" cols="30"
+                                                rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer ">
                                 <button id="btnSalvar" class="btn btn-fill btn-primary">Cadastrar<div
@@ -115,11 +124,16 @@
                 e.preventDefault();
 
                 var form = $(this);
+                var data = form.serializeArray();
+                data.push({
+                    name: "Horario",
+                    value: "{{ $horario->cd_horario }}"
+                });
 
                 $.ajax({
                     url: "{{ route('agendamentos.insert') }}",
                     type: "POST",
-                    data: form.serialize(),
+                    data: $.param(data),
                     dataType: "JSON",
                     beforeSend: function() {
                         $("#btnSalvar").html("Salvando...");
@@ -130,7 +144,7 @@
                             swal("Cadastro realizado!", "Novo registro inserido com sucesso",
                                 "success").then((value) => {
                                 window.location.href =
-                                    "{{ route('especies.index') }}";
+                                    "{{ route('agendamentos.index') }}";
                                 $("#btnSalvar").html("Salvar");
                                 $("#btnSalvar").prop("disabled", false);
                             });
