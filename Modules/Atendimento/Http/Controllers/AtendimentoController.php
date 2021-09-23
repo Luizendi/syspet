@@ -5,6 +5,7 @@ namespace Modules\Atendimento\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AtendimentoController extends Controller
 {
@@ -14,7 +15,15 @@ class AtendimentoController extends Controller
      */
     public function index()
     {
-        return view('atendimento::dashboard');
+        $HorariosVagos = DB::table('tbl_horariosagendas')
+        ->where('situacao', '=', 'V')
+        ->where('ativo', '=', 'S')
+        ->count();
+
+        $Agendamentos = DB::table('tbl_agendamentos')
+        ->where('ativo', '=', 'S')
+        ->count();
+        return view('atendimento::dashboard', ['agendamentos' => $Agendamentos, 'horariosvagos' => $HorariosVagos]);
     }
 
     /**

@@ -52,25 +52,25 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-static">Código Cliente</label>
+                                            <label for="" class="bmd-label-static">Código Tutor</label>
                                             <input type="text" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-static">Nome Cliente</label>
+                                            <label for="" class="bmd-label-static">Nome Tutor</label>
                                             <input type="text" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-static">Telefone Cliente</label>
+                                            <label for="" class="bmd-label-static">Telefone Tutor</label>
                                             <input type="text" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-static">CPF Cliente</label>
+                                            <label for="" class="bmd-label-static">CPF Tutor</label>
                                             <input type="text" class="form-control" disabled>
                                         </div>
                                     </div>
