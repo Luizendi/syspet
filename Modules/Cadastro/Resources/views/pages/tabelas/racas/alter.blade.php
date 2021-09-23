@@ -14,17 +14,10 @@
                         </div>
                         <form id="formCadastro">
                             @csrf
-                            @method("POST")
+                            @method("PUT")
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-1">
-                                        <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Código</label>
-                                            <input type="text" name="Codigo" class="form-control" id="codigo"
-                                                value="{{ $raca->cd_raca }}" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
                                             <input type="text" name="Nome" class="form-control" id="nome"
@@ -45,8 +38,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select name="Ativo" id="ativo" class="form-control selectpicker"
@@ -84,7 +75,7 @@
                 var form = $(this);
 
                 $.ajax({
-                    url: "#",
+                    url: "{{ route('racas.update', [$raca->cd_raca]) }}",
                     type: "POST",
                     data: form.serialize(),
                     dataType: "JSON",
@@ -94,7 +85,7 @@
                     },
                     success: function(data) {
                         if (data === "SUCCESS") {
-                            swal("Cadastro realizado!", "Novo registro inserido com sucesso",
+                            swal("Registro alterado!", "Alteração realizada com sucesso.",
                                 "success").then((value) => {
                                 window.location.href =
                                     "{{ route('racas.index') }}";

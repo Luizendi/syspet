@@ -65,9 +65,9 @@ class TiposAltasController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(TiposAltas $tipoalta)
     {
-        return view('cadastro::pages.tabelas.tiposaltas.alter');
+        return view('cadastro::pages.tabelas.tiposaltas.alter', compact('tipoalta'));
     }
 
     /**
@@ -76,9 +76,22 @@ class TiposAltasController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $tipoalta)
     {
-        //
+        $TipoAlta = TiposAltas::findOrFail($tipoalta);
+
+        $update = $TipoAlta->update([
+            "nome" => $request->input("Nome"),
+            "obito" => $request->input("Obito") == "on" ? "S" : "N",
+            "ativo" => $request->input("Ativo"),
+            "updated_at" => now()
+        ]);
+
+        if ($update) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**

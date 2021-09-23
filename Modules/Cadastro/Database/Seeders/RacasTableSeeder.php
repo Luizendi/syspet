@@ -4,6 +4,7 @@ namespace Modules\Cadastro\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cadastro\Entities\Racas;
 
 class RacasTableSeeder extends Seeder
 {
@@ -16,6 +17,10 @@ class RacasTableSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        Racas::create([
+            "fk_especie" => "1",
+            "nome" => "PERSA",
+            "ativo" => "S"
+        ]);
     }
 }

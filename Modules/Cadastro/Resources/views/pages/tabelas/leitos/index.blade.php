@@ -40,7 +40,7 @@
                                             class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Ativo' : 'Inativo' }}</span>
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('racas.edit', $item->cd_leito) }}"
+                                        <a href="{{ route('leitos.edit', $item->cd_leito) }}"
                                             class="btn btn-link btn-warning btn-just-icon" data-toggle="tooltip"
                                             data-placement="bottom" title="Editar"><i class="material-icons">edit</i></a>
                                         <a href="#" class="btn btn-link btn-danger btn-just-icon" data-toggle="tooltip"

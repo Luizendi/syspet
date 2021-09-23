@@ -41,9 +41,9 @@ class EspeciesController extends Controller
             "created_at" => now()
         ]);
 
-        if($especie){
+        if ($especie) {
             return json_encode("SUCCESS");
-        }else{
+        } else {
             return json_encode("ERROR");
         }
     }
@@ -74,9 +74,21 @@ class EspeciesController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $especie)
     {
-        //
+        $Especie = Especies::findOrFail($especie);
+
+        $update = $Especie->update([
+            "nome" => $request->input("Nome"),
+            "ativo" => $request->input("Ativo"),
+            "updated_at" => now()
+        ]);
+
+        if ($update) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**

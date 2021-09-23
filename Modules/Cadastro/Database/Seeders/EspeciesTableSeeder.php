@@ -4,6 +4,7 @@ namespace Modules\Cadastro\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cadastro\Entities\Especies;
 
 class EspeciesTableSeeder extends Seeder
 {
@@ -16,6 +17,10 @@ class EspeciesTableSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        Especies::create([
+            "nome" => "FELINOS",
+            "ativo" => "S"
+        ]);
+
     }
 }

@@ -4,6 +4,7 @@ namespace Modules\Cadastro\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cadastro\Entities\TiposAltas;
 
 class TiposAltasTableSeeder extends Seeder
 {
@@ -16,6 +17,10 @@ class TiposAltasTableSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        TiposAltas::create([
+            "nome" => "ALTA MELHORADA",
+            "obito" => "N",
+            "ativo" => "S"
+        ]);
     }
 }

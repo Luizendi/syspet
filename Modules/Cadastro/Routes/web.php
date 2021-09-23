@@ -46,6 +46,7 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/new', 'EspeciesController@create')->name('especies.new');
         Route::post('/new', 'EspeciesController@store')->name('especies.insert');
         Route::get('/edit/{especie}', 'EspeciesController@edit')->name('especies.edit');
+        Route::put('/edit/{especie}', 'EspeciesController@update')->name('especies.update');
     });
 
     Route::prefix('leitos')->group(function () {
@@ -53,6 +54,7 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/new', 'LeitosController@create')->name('leitos.new');
         Route::post('/new', 'LeitosController@store')->name('leitos.insert');
         Route::get('/edit/{leito}', 'LeitosController@edit')->name('leitos.edit');
+        Route::put('/edit/{leito}', 'LeitosController@update')->name('leitos.update');
     });
 
     Route::prefix('racas')->group(function () {
@@ -60,6 +62,7 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/new', 'RacasController@create')->name('racas.new');
         Route::post('/new', 'RacasController@store')->name('racas.insert');
         Route::get('/edit/{raca}', 'RacasController@edit')->name('racas.edit');
+        Route::put('/edit/{raca}', 'RacasController@update')->name('racas.update');
     });
 
     Route::prefix('tipos-altas')->group(function () {
@@ -67,6 +70,7 @@ Route::prefix('cadastro')->group(function () {
         Route::get('/new', 'TiposAltasController@create')->name('tiposaltas.new');
         Route::post('/new', 'TiposAltasController@store')->name('tiposaltas.insert');
         Route::get('/edit/{tipoalta}', 'TiposAltasController@edit')->name('tiposaltas.edit');
+        Route::put('/edit/{tipoalta}', 'TiposAltasController@update')->name('tiposaltas.update');
     });
 
     Route::prefix('fornecedores')->group(function () {

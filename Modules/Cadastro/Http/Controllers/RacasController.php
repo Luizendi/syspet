@@ -81,9 +81,22 @@ class RacasController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $raca)
     {
-        //
+        $Raca = Racas::findOrFail($raca);
+
+        $update = $Raca->update([
+            "nome" => $request->input("Nome"),
+            "fk_especie" => $request->input("Especie"),
+            "ativo" => $request->input("Ativo"),
+            "updated_at" => now()
+        ]);
+
+        if ($update) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**

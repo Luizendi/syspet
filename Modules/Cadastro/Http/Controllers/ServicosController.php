@@ -26,7 +26,8 @@ class ServicosController extends Controller
      */
     public function create()
     {
-        return view('cadastro::pages.tabelas.servicos.new');
+        $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.tabelas.servicos.new', ['portes' => $portes]);
     }
 
     /**
@@ -42,8 +43,7 @@ class ServicosController extends Controller
             "porte" => $request->input("Porte"),
             "valor" => $request->input("Valor"),
             "ativo" => "S",
-            "created_at" => now(),
-            "updated_at" => now()
+            "created_at" => now()
         ]);
 
         if ($servicos) {

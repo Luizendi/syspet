@@ -17,5 +17,9 @@ class CadastroDatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call([PortesTableSeeder::class]);
+        $this->call([EspeciesTableSeeder::class]);
+        $this->call([RacasTableSeeder::class]);
+        $this->call([TiposAltasTableSeeder::class]);
+        $this->call([LeitosTableSeeder::class]);
     }
 }

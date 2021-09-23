@@ -71,9 +71,10 @@ class LeitosController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Leitos $leito)
     {
-        return view('cadastro::edit');
+        $portes = DB::table('tbl_portes')->where('ativo', '=', 'S')->get();
+        return view('cadastro::pages.tabelas.leitos.alter', compact('leito'), ['portes' => $portes]);
     }
 
     /**
@@ -82,9 +83,23 @@ class LeitosController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $leito)
     {
-        //
+        $Leito = Leitos::findOrFail($leito);
+
+        $update = $Leito->update([
+            "nome" => $request->input("Nome"),
+            "fk_porte" => $request->input("Porte"),
+            "isolamento" => $request->input("Isolamento"),
+            "ativo" => $request->input("Ativo"),
+            "updated_at" => now()
+        ]);
+
+        if ($update) {
+            return json_encode("SUCCESS");
+        } else {
+            return json_encode("ERROR");
+        }
     }
 
     /**

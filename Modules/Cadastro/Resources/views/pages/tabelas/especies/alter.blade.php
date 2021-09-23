@@ -24,15 +24,13 @@
                                                 value="{{ $especie->cd_especie }}" readonly required />
                                         </div>
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
                                             <input type="text" name="Nome" class="form-control" id="nome"
                                                 value="{{ $especie->nome }}" required />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <select name="Ativo" id="ativo" class="form-control selectpicker"
@@ -69,8 +67,8 @@
 
                 var form = $(this);
 
-                /*$.ajax({
-                    url: "{{ route('especies.insert') }}",
+                $.ajax({
+                    url: "{{ route('especies.update', [$especie->cd_especie]) }}",
                     type: "POST",
                     data: form.serialize(),
                     dataType: "JSON",
@@ -80,7 +78,7 @@
                     },
                     success: function(data) {
                         if (data === "SUCCESS") {
-                            swal("Cadastro realizado!", "Novo registro inserido com sucesso",
+                            swal("Registro alterado!", "Alteração realizada com sucesso.",
                                 "success").then((value) => {
                                 window.location.href =
                                     "{{ route('especies.index') }}";
@@ -102,7 +100,7 @@
                             $("#btnSalvar").prop("disabled", false);
                         });
                     }
-                });*/
+                });
             });
         });
     </script>
