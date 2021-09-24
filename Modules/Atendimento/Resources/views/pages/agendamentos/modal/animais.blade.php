@@ -37,9 +37,9 @@
                                     <td class="text-center">{{ $item->cpftutor }}</td>
                                     <td class="text-right"><a href="#"
                                             class="btn btn-link btn-success btn-just-icon confirm" data-toggle="tooltip"
-                                            data-placement="bottom"
-                                            onclick="selecionarAnimal({{ $item->cd_animal }}, '{{ $item->nome }}', '{{ $item->especie }}')"
-                                            title="Selecionar Animal"><i class="material-icons">done</i></a></td>
+                                            data-placement="bottom" onclick="retornaAnimal({{ $item->cd_animal }})"
+                                            title="Selecionar Animal" data-dismiss="modal"><i
+                                                class="material-icons">done</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

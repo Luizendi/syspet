@@ -30,14 +30,15 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-static">Código Animal</label>
-                                            <input type="text" name="CodigoAnimal" id="idAnimal" class="form-control" />
+                                            <input type="text" name="CodigoAnimal" id="idAnimal"
+                                                class="form-control animal-cliente" />
                                         </div>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-group">
                                             <label class="bmd-label-static" for="">Animal</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="NomeAnimal"
+                                                <input type="text" class="form-control animal-cliente" name="NomeAnimal"
                                                     id="nomeAnimal" />
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-fab btn-round btn-primary"
@@ -53,25 +54,27 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-static">Código Tutor</label>
-                                            <input type="text" class="form-control" disabled>
+                                            <input type="text" id="idCliente" class="form-control animal-cliente" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-static">Nome Tutor</label>
-                                            <input type="text" class="form-control" disabled>
+                                            <input type="text" id="nomeCliente" class="form-control animal-cliente"
+                                                disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-static">Telefone Tutor</label>
-                                            <input type="text" class="form-control" disabled>
+                                            <input type="text" id="telefoneCliente" class="form-control animal-cliente"
+                                                disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-static">CPF Tutor</label>
-                                            <input type="text" class="form-control" disabled>
+                                            <input type="text" id="cpfCliente" class="form-control animal-cliente" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -120,6 +123,12 @@
 @push('js')
     <script>
         $(document).ready(function() {
+
+            $("#idAnimal").blur(function() {
+                var idAnimal = $("#idAnimal").val();
+                retornaAnimal(idAnimal);
+            });
+
             $("#formCadastro").submit(function(e) {
                 e.preventDefault();
 
@@ -166,5 +175,48 @@
                 });
             });
         });
+        var retornaAnimal = function(idAnimal) {
+            var url = "{{ route('api.animais.unico', ':id') }}"
+            url = url.replace(':id', idAnimal);
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "JSON",
+                beforeSend: function() {
+                    $(".animal-cliente").val("BUSCANDO...");
+                },
+                success: function(data) {
+                    if (data === "INACTIVE") {
+                        swal.fire("Animal inativo no sistema",
+                            "O cadastro do animal e/ou cliente estão inativo no sistema, verifique o cadastro e tente novamente",
+                            "error");
+                        $(".animal-cliente").val("");
+                    } else if (data === "ERROR") {
+                        swal.fire("Animal não encontrado",
+                            "Verifique o código informado e tente novamente", "error");
+                        $(".animal-cliente").val("");
+                    } else if (data === "OBITO") {
+                        swal.fire("Óbito",
+                            "Animal sinalizado com óbito no sitema, verifique o cadastro do mesmo",
+                            "error");
+                        $(".animal-cliente").val("");
+                    } else {
+                        $("#idAnimal").val(data.cd_animal);
+                        $("#nomeAnimal").val(data.nome);
+
+                        $("#idCliente").val(data.cd_cliente);
+                        $("#nomeCliente").val(data.cliente);
+                        $("#telefoneCliente").val(data.celular);
+                        $("#cpfCliente").val(data.cnpjcpf);
+                    }
+                },
+                error: function() {
+                    swal.fire("Animal não encontrado",
+                        "Verifique o código informado e tente novamente", "error");
+                    $(".animal-cliente").val("");
+                }
+            });
+        }
     </script>
 @endpush

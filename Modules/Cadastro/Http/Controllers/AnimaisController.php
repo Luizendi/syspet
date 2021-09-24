@@ -106,4 +106,29 @@ class AnimaisController extends Controller
     {
         //
     }
+
+    public function retornaAnimal($animal)
+    {
+        $animais = DB::table('tbl_animais AS a')
+            ->select('a.*', 'c.cd_cliente', 'c.nome as cliente', 'c.celular', 'c.cnpjcpf')
+            ->leftJoin('tbl_clientes AS c', 'c.cd_cliente', '=', 'a.fk_cliente')
+            ->where('cd_animal', '=', $animal);
+
+        if ($animais->count() > 0) {
+
+            $animais = $animais->first();
+
+            if ($animais->ativo == "S") {
+                if ($animais->obito == "N") {
+                    return json_encode($animais);
+                } else {
+                    return json_encode("OBITO");
+                }
+            } else {
+                return json_encode("INACTIVE");
+            }
+        } else {
+            return json_encode("ERROR");
+        }
+    }
 }

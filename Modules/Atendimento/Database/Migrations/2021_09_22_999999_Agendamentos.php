@@ -19,6 +19,7 @@ class Agendamentos extends Migration
             $table->bigInteger('fk_animal')->unsigned();
             $table->bigInteger('fk_servico')->unsigned()->nullable();
             $table->string('nome', 2500)->nullable();
+            $table->string('confirmado', 1, ['S', 'N', 'F'])->default('N')->nullable();
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
 

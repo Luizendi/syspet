@@ -50,7 +50,8 @@
                                 <thead class="text-success">
                                     <tr>
                                         <th class="text-center">Código</th>
-                                        <th class="text-center">Nome</th>
+                                        <th class="text-center">Nome Tutor</th>
+                                        <th class="text-center">Nome Animal</th>
                                         <th class="text-center">Situação</th>
                                         <th class="disabled-sorting text-right">Ações</th>
                                     </tr>
@@ -58,10 +59,11 @@
                                 <tbody>
                                     @foreach ($AgendamentosDia as $item)
                                         <tr>
-                                            <td>{{ $item->cd_agendamento }}</td>
-                                            <td>{{ $item->cd_horario }}</td>
-                                            <td>{{ $item->cd_horario }}</td>
-                                            <td>{{ $item->cd_horario }}</td>
+                                            <td class="text-center">{{ $item->cd_agendamento }}</td>
+                                            <td class="text-center">{{ $item->cliente }}</td>
+                                            <td class="text-center">{{ $item->animal }}</td>
+                                            <td class="text-center">{{ $item->confirmado }}</td>
+                                            <td class="text-right">{{ $item->cd_horario }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

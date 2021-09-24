@@ -25,6 +25,9 @@ class AtendimentoController extends Controller
         ->count();
 
         $AgendamentosDia = DB::table('tbl_agendamentos AS a')
+        ->select('a.*', 'ha.*', 'c.nome AS cliente', 'an.nome AS animal')
+        ->leftJoin('tbl_animais AS an', 'an.cd_animal', '=', 'a.fk_animal')
+        ->leftJoin('tbl_clientes AS c', 'c.cd_cliente', '=', 'an.fk_cliente')
         ->leftJoin('tbl_horariosagendas AS ha', 'ha.cd_horario', '=', 'a.fk_horario')
         ->whereDate('data', '=', now())
         ->get();

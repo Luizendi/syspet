@@ -25,3 +25,7 @@ Route::prefix('clientes')->group(function () {
 Route::prefix('racas')->group(function () {
     Route::get('/{raca}', 'RacasController@retornaRaca')->name('api.racas.unico');
 });
+
+Route::prefix('animais')->group(function () {
+    Route::get('/{animal}', 'AnimaisController@retornaAnimal')->name('api.animais.unico');
+});
