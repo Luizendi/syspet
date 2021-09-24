@@ -42,7 +42,7 @@
                     </div>
                     <div class="card-body">
                         <div class="toolbar">
-                            
+
                         </div>
                         <div class="material-datatables">
                             <table id="table" class="table table-no-bordered table-hover" cellspacing="0" width="100%"
@@ -56,12 +56,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    @foreach ($AgendamentosDia as $item)
+                                        <tr>
+                                            <td>{{ $item->cd_agendamento }}</td>
+                                            <td>{{ $item->cd_horario }}</td>
+                                            <td>{{ $item->cd_horario }}</td>
+                                            <td>{{ $item->cd_horario }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

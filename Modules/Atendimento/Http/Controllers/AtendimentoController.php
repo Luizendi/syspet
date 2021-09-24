@@ -28,7 +28,14 @@ class AtendimentoController extends Controller
         ->leftJoin('tbl_horariosagendas AS ha', 'ha.cd_horario', '=', 'a.fk_horario')
         ->whereDate('data', '=', now())
         ->get();
-        return view('atendimento::dashboard', ['agendamentos' => $Agendamentos, 'horariosvagos' => $HorariosVagos]);
+
+        return view('atendimento::dashboard', 
+            [
+                'agendamentos' => $Agendamentos,
+                'horariosvagos' => $HorariosVagos, 
+                'AgendamentosDia' => $AgendamentosDia
+            ]
+        );
     }
 
     /**
