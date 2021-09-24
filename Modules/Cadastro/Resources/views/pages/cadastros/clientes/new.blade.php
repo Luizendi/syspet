@@ -17,10 +17,16 @@
                             @method("POST")
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Nome</label>
                                             <input type="text" name="Nome" class="form-control" id="nome" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="" class="bmd-label-floating">Email</label>
+                                            <input type="email" name="Email" class="form-control mi" id="email" required />
                                         </div>
                                     </div>
                                 </div>
@@ -47,8 +53,9 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="" class="bmd-label-floating">Email</label>
-                                            <input type="text" name="Email" class="form-control mi" id="email" required />
+                                            <label for="" class="bmd-label-floating">Data Nascimento</label>
+                                            <input type="text" name="DataNascimento" class="form-control datepicker"
+                                                id="dataNascimento" required />
                                         </div>
                                     </div>
                                 </div>
@@ -69,15 +76,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Bairro</label>
-                                            <input type="text" name="Bairro" class="form-control" id="bairro"
-                                                required />
+                                            <input type="text" name="Bairro" class="form-control" id="bairro" required />
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="" class="bmd-label-floating">Número</label>
-                                            <input type="text" name="Numero" class="form-control" id="numero"
-                                                required />
+                                            <input type="text" name="Numero" class="form-control" id="numero" required />
                                         </div>
                                     </div>
                                 </div>

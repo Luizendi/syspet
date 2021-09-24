@@ -14,6 +14,7 @@ class ClientesController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
+
     public function index()
     {
         $clientes = Clientes::all();
@@ -40,21 +41,22 @@ class ClientesController extends Controller
             "nome" => $request->input("Nome"),
             "celular" => $request->input("Celular"),
             "email" => $request->input("Email"),
-            "cnpjcpf"=>$request->input("CnpjCpf"),
-            "ierg"=>$request->input("IeRg"),
-            "cep"=>$request->input("CEP"),
-            "endereco"=>$request->input("Endereco"),
-            "bairro"=>$request->input("Bairro"),
-            "numero"=>$request->input("Numero"),
-            "cidade"=>$request->input("Cidade"),
-            "estado"=>$request->input("Estado"),
+            "cnpjcpf" => $request->input("CnpjCpf"),
+            "ierg" => $request->input("IeRg"),
+            "data_nascimento" => date('Y/d/m', strtotime($request->input("DataNascimento"))),
+            "cep" => $request->input("CEP"),
+            "endereco" => $request->input("Endereco"),
+            "bairro" => $request->input("Bairro"),
+            "numero" => $request->input("Numero"),
+            "cidade" => $request->input("Cidade"),
+            "estado" => $request->input("Estado"),
             "ativo" => "S",
             "created_at" => now()
         ]);
 
-        if($clientes){
+        if ($clientes) {
             return json_encode("SUCCESS");
-        }else{
+        } else {
             return json_encode("ERROR");
         }
     }
@@ -100,21 +102,21 @@ class ClientesController extends Controller
         //
     }
 
-    public function retornaCliente($cliente){
+    public function retornaCliente($cliente)
+    {
 
         $clientes = DB::table('tbl_clientes')->where('cd_cliente', '=', $cliente);
 
-        if($clientes->count()>0){
+        if ($clientes->count() > 0) {
 
             $clientes = $clientes->first();
 
-            if($clientes->ativo == "S"){
+            if ($clientes->ativo == "S") {
                 return json_encode($clientes);
-            }else{
+            } else {
                 return json_encode("INACTIVE");
             }
-
-        }else{
+        } else {
             return json_encode("ERROR");
         }
     }

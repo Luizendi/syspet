@@ -17,12 +17,10 @@ class AtendimentoController extends Controller
     {
         $HorariosVagos = DB::table('tbl_horariosagendas')
         ->where('situacao', '=', 'V')
-        ->where('ativo', '=', 'S')
-        ->count();
+        ->where('ativo', '=', 'S');
 
         $Agendamentos = DB::table('tbl_agendamentos')
-        ->where('ativo', '=', 'S')
-        ->count();
+        ->where('ativo', '=', 'S');
 
         $AgendamentosDia = DB::table('tbl_agendamentos AS a')
         ->select('a.*', 'ha.*', 'c.nome AS cliente', 'an.nome AS animal')
@@ -38,8 +36,8 @@ class AtendimentoController extends Controller
 
         return view('atendimento::dashboard', 
             [
-                'agendamentos' => $Agendamentos,
-                'horariosvagos' => $HorariosVagos, 
+                'agendamentos' => $Agendamentos->count(),
+                'horariosvagos' => $HorariosVagos->count(), 
                 'quantidadesAtendimentoDia' => $AgendamentosDia->count(),
                 'agendamentosConfirmados' => $AgendamentosConfirmados->count(),
                 'agendamentosDia' => $AgendamentosDia->get()
