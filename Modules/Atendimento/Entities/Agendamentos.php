@@ -17,6 +17,7 @@ class Agendamentos extends Model
         "fk_animal",
         "fk_servico",
         "nome",
+        "confirmado",
         "ativo"
     ];
 }

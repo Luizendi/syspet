@@ -29,14 +29,20 @@ class AtendimentoController extends Controller
         ->leftJoin('tbl_animais AS an', 'an.cd_animal', '=', 'a.fk_animal')
         ->leftJoin('tbl_clientes AS c', 'c.cd_cliente', '=', 'an.fk_cliente')
         ->leftJoin('tbl_horariosagendas AS ha', 'ha.cd_horario', '=', 'a.fk_horario')
+        ->whereDate('data', '=', now());
+
+        $AgendamentosConfirmados = DB::table('tbl_agendamentos AS a')
+        ->leftJoin('tbl_horariosagendas AS ha', 'ha.cd_horario', '=', 'a.fk_horario')
         ->whereDate('data', '=', now())
-        ->get();
+        ->where('confirmado', '=', 'S');
 
         return view('atendimento::dashboard', 
             [
                 'agendamentos' => $Agendamentos,
                 'horariosvagos' => $HorariosVagos, 
-                'AgendamentosDia' => $AgendamentosDia
+                'quantidadesAtendimentoDia' => $AgendamentosDia->count(),
+                'agendamentosConfirmados' => $AgendamentosConfirmados->count(),
+                'agendamentosDia' => $AgendamentosDia->get()
             ]
         );
     }
