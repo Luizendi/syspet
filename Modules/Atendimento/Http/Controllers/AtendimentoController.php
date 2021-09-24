@@ -23,6 +23,11 @@ class AtendimentoController extends Controller
         $Agendamentos = DB::table('tbl_agendamentos')
         ->where('ativo', '=', 'S')
         ->count();
+
+        $AgendamentosDia = DB::table('tbl_agendamentos AS a')
+        ->leftJoin('tbl_horariosagendas AS ha', 'ha.cd_horario', '=', 'a.fk_horario')
+        ->whereDate('data', '=', now())
+        ->get();
         return view('atendimento::dashboard', ['agendamentos' => $Agendamentos, 'horariosvagos' => $HorariosVagos]);
     }
 
