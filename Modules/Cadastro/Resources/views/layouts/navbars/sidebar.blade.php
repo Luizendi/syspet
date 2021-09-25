@@ -38,7 +38,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse {{ $activePage == 'especies' || $activePage == 'fornecedores' || $activePage == 'leitos' || $activePage == 'racas' || $activePage == 'servicos' || $activePage == 'tipoalta' ? 'show' : '' }}"
+                <div class="collapse {{ $activePage == 'especies' || $activePage == 'fornecedores' || $activePage == 'leitos' || $activePage == 'racas' || $activePage == 'servicos' || $activePage == 'tipoalta' || $activePage == 'produtos' ? 'show' : '' }}"
                     id="tabelas">
                     <ul class="nav">
                         <li class="nav-item {{ $activePage == 'especies' ? 'active' : '' }}">
@@ -80,6 +80,13 @@
                             <a class="nav-link" href="{{ route('servicos.index') }}">
                                 <span class="sidebar-mini"> S </span>
                                 <span class="sidebar-normal"> Serviços
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ $activePage == 'produtos' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('produtos.index') }}">
+                                <span class="sidebar-mini"> P </span>
+                                <span class="sidebar-normal"> Produtos
                                 </span>
                             </a>
                         </li>
