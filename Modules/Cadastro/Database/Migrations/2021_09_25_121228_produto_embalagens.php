@@ -17,6 +17,7 @@ class ProdutoEmbalagens extends Migration
             $table->bigIncrements('cd_produtoembalagem');
             $table->bigInteger('fk_produto')->unsigned()->nullable();
             $table->bigInteger('fk_embalagem')->unsigned()->nullable();
+            $table->string('menorunidade', 1, ['S', 'N']);
             $table->string('ativo', 1, ['S', 'N'])->default('S');
             $table->timestamps();
 

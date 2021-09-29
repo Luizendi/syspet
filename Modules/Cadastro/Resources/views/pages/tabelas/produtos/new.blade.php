@@ -35,35 +35,63 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card ">
-                    <div class="card-header card-header-primary card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">add</i>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card ">
+                        <div class="card-header card-header-primary card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">list</i>
+                            </div>
+                            <h4 class="card-title">Embalagens do Produto</h4>
                         </div>
-                        <h4 class="card-title">Embalagens</h4>
-                    </div>
-                    <form id="formCadastroProduto">
-                        @csrf
-                        @method("POST")
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="" class="bmd-label-floating">Embalagem</label>
-                                        <input type="text" name="Nome" class="form-control" id="nome" required />
+                            <div class="toolbar">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" disabled><i class="material-icons">add</i>
+                                    Novo
+                                </button>
+                                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Embalagem do Produto</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary">Salvar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="material-datatables col-sm-12">
+                                <table id="table" class="table table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th class="text-center">Embalagem</th>
+                                            <th class="text-center">Quantidade</th>
+                                            <th class="text-center">Menor Controle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($embalagens as $item)
+                                        <tr>
+                                            <td class="text-center">{{ $item->nome }}</td>
+                                            <td class="text-center">{{ $item->sigla }}</td>
+                                            <td class="text-center"><span class="badge badge-{{ $item->ativo == 'S' ? 'primary' : 'danger' }}">{{ $item->ativo == 'S' ? 'Sim' : 'Não' }}</span></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="card-footer ">
-                            <button id="btnSalvar" class="btn btn-fill btn-primary">Cadastrar<div class="ripple-container">
-                                </div>
-                            </button>
-                            <a href="{{ route('produtos.index') }}" class="btn btn-fill btn-secondary">Cancelar</a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
